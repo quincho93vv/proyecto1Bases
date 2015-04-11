@@ -2,10 +2,7 @@ package Vista;
 
 import Modelo.Cliente;
 import Modelo.ConnectionHandler;
-import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class SistemaVentas extends javax.swing.JFrame {
@@ -810,16 +807,41 @@ public class SistemaVentas extends javax.swing.JFrame {
 
     private void btn_cli_consultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cli_consultaActionPerformed
         panel_edit_add_cliente.setVisible(false);
+        try {
+            String codigoCliente = JOptionPane.showInputDialog(this, "Ingrese el codigo del cliente a consultar: \n", "Consultar Cliente", JOptionPane.QUESTION_MESSAGE);
+            Object [] r = cliente.selectCliente(Integer.parseInt(codigoCliente));
+            String cod = String.valueOf(r[0]);
+            String nom = (String)r[1];
+            String ven = String.valueOf(r[2]);
+            JOptionPane.showMessageDialog(null, "Cliente: \n\nNombre : "+ nom +"\nCodigo : "+cod+"\nVendeor : "+ ven , "Cliente "+ cod,JOptionPane.INFORMATION_MESSAGE);
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Error al Consultar Cliente.","Error",JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btn_cli_consultaActionPerformed
 
     private void btn_cli_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cli_modificarActionPerformed
         panel_edit_add_cliente.setVisible(true);
-        String codigoCliente = JOptionPane.showInputDialog(this, "Ingrese el codigo del cliente a modificar: \n", "Modificar Cliente", JOptionPane.QUESTION_MESSAGE);
+        try {
+            String codigoCliente = JOptionPane.showInputDialog(this, "Ingrese el codigo del cliente a modificar: \n", "Modificar Cliente", JOptionPane.QUESTION_MESSAGE);
+            Object [] r = cliente.selectCliente(Integer.parseInt(codigoCliente));
+            text_codigo.setText(String.valueOf(r[0]));
+            text_nombre_cliente.setText((String)r[1]);
+            text_vendedor.setText(String.valueOf(r[2]));
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Error al Modificar Cliente.","Error",JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btn_cli_modificarActionPerformed
 
     private void btn_cli_borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cli_borrarActionPerformed
         panel_edit_add_cliente.setVisible(false);
-        String codigoCliente = JOptionPane.showInputDialog(this, "Ingrese el codigo del cliente a eliminar: \n", "Eliminar Cliente", JOptionPane.QUESTION_MESSAGE);
+        try{
+            String codigoCliente = JOptionPane.showInputDialog(this, "Ingrese el codigo del cliente a eliminar: \n", "Eliminar Cliente", JOptionPane.QUESTION_MESSAGE);
+            cliente.deleteCliente(Integer.parseInt(codigoCliente));
+            JOptionPane.showMessageDialog(null, "Cliente eliminado Correctamento.", "Extio",JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception e){
+            JOptionPane.showMessageDialog(null, "Error al Eliminar Cliente.","Error",JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_btn_cli_borrarActionPerformed
 
 

@@ -2,7 +2,9 @@ package Modelo;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import oracle.jdbc.OracleTypes;
 
 public class Cliente {
     
@@ -14,16 +16,46 @@ public class Cliente {
     }
     
     public void insertCliente(int codigo, String nombre, int vendedor) throws SQLException{
-        cs = connection.prepareCall("{call PA_001(?,?,?)}");
+        cs = connection.prepareCall("{call SP_001(?,?,?)}");
         cs.setInt(1, codigo);
         cs.setString(2, nombre);
         cs.setInt(3, vendedor);
         cs.executeUpdate();
+        cs.close();
     }
     
-    public void selectCliente(String tipo, String valor) throws SQLException{
-          // Aca se pueden hacer varios procedimientos almacenados para consultar por diferentes atributos: nombre, codigo
-          // o segun el tipo ejecutar una sentencia sql distinta, que creo que se puede hacer con un IF en el procedimiento directamente
+    public void updateCliente(int codigo, String nombre, int vendedor) throws SQLException{
+        cs = connection.prepareCall("{call SP_002(?,?,?)}");
+        cs.setInt(1, codigo);
+        cs.setString(2, nombre);
+        cs.setInt(3, vendedor);
+        cs.executeUpdate();
+        cs.close();
+    }
+    
+    public void deleteCliente(int codigo) throws SQLException{
+        cs = connection.prepareCall("{call SP_003(?)}");
+        cs.setInt(1, codigo);
+        cs.executeUpdate();
+        cs.close();
+    }
+    
+    public Object[] selectCliente(int codigo) throws SQLException{
+        Object [] result = new Object[3];  // En lugar de este array, se puede crear ya sea un Cliente cm tal 
+                                           // (con atributos definidos) o una lista o alguna otra cosa
+        
+        cs = connection.prepareCall("{? = call FS_001(?)}");
+        cs.registerOutParameter(1, OracleTypes.CURSOR);
+        cs.setInt(2, codigo);
+        cs.executeUpdate();
+        ResultSet rs = (ResultSet) cs.getObject(1);
+        while (rs.next()) {
+            result[0] = rs.getInt("Codigo");
+            result[1] = rs.getString("Nombre");
+            result[2]  = rs.getInt("Vendedor");
+        }
+        cs.close();
+        return result;
     }
     
 }
