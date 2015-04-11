@@ -1,6 +1,7 @@
 package Modelo;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 import oracle.jdbc.pool.OracleDataSource;
 
@@ -16,9 +17,7 @@ public class ConnectionHandler {
         this.user = user;
         this.password = pass;
         try {
-            OracleDataSource datasource = new OracleDataSource();
-            datasource.setURL(jdbcUrl);
-            connection = datasource.getConnection(user,password);
+            connection = DriverManager.getConnection(jdbcUrl, user, pass);
         } catch(SQLException e){
             System.err.println("Error al establecer Conexión.");
         }
