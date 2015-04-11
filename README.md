@@ -1,4 +1,4 @@
-# proyecto1Bases
+# Notas:
 
 
 Maes tengo la duda, si hay que ajutarse a el script de la tarea que ya habiamos hecho (Carpeta 'scripts').?
