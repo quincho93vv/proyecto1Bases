@@ -1,11 +1,17 @@
 package Vista;
 
+import Modelo.ConnectionHandler;
+import java.sql.Connection;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 public class SistemaVentas extends javax.swing.JFrame {
     
     String[] headClientes = {"Codigo", "Nombre", "Vendedor"};
     String[] headVendedores = {"Codigo", "Nombre", "Total vendido"};
     String[] headFacturas = {"Codigo" ,"Cliente", "Tipo","Fecha","Total"};
     String[] headProductos = {"Codigo", "Nombre", "Precio"};
+    Connection conn;
     
     public SistemaVentas() {
         initComponents();
@@ -732,6 +738,14 @@ public class SistemaVentas extends javax.swing.JFrame {
     }//GEN-LAST:event_text_usuarioActionPerformed
 
     private void btn_conectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_conectarActionPerformed
+       try {
+        String pass = new String(pass_usuario.getPassword());
+        ConnectionHandler ch = new ConnectionHandler(combo_server.getSelectedIndex(), text_usuario.getText(), pass);
+        conn = ch.getConnection();
+        JOptionPane.showMessageDialog(null, "Conexión Exitosa.");
+       } catch (SQLException e){
+           JOptionPane.showMessageDialog(null, "Error al Conectar.");
+       }
         
     }//GEN-LAST:event_btn_conectarActionPerformed
 

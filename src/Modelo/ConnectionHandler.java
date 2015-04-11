@@ -3,7 +3,6 @@ package Modelo;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import oracle.jdbc.pool.OracleDataSource;
 
 public class ConnectionHandler {
     private String jdbcUrl;
@@ -11,16 +10,13 @@ public class ConnectionHandler {
     private String password;
     private Connection connection;
     
-    public ConnectionHandler(int type, String user, String pass){
-        this.jdbcUrl = (type == 1) ? "jdbc:oracle:thin:@localhost:1521:xe"
+    public ConnectionHandler(int type, String user, String pass) throws SQLException{
+        this.jdbcUrl = (type == 0) ? "jdbc:oracle:thin:@localhost:1521:xe"
                                    : "jdbc:postgresql://localhost:5432/postgres"; 
         this.user = user;
         this.password = pass;
-        try {
-            connection = DriverManager.getConnection(jdbcUrl, user, pass);
-        } catch(SQLException e){
-            System.err.println("Error al establecer Conexión.");
-        }
+        this.connection = DriverManager.getConnection(jdbcUrl, user, pass);
+
     }
 
     public Connection getConnection() {
