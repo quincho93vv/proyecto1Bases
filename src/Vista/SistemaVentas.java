@@ -1,5 +1,6 @@
 package Vista;
 
+import Modelo.Cliente;
 import Modelo.ConnectionHandler;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -14,6 +15,7 @@ public class SistemaVentas extends javax.swing.JFrame {
     String[] headFacturas = {"Codigo" ,"Cliente", "Tipo","Fecha","Total"};
     String[] headProductos = {"Codigo", "Nombre", "Precio"};
     ConnectionHandler ch;
+    Cliente cliente;
     
     public SistemaVentas() {
         initComponents();
@@ -751,7 +753,7 @@ public class SistemaVentas extends javax.swing.JFrame {
 
     private void cliente_aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cliente_aceptarActionPerformed
         try {
-            ch.insertCliente(Integer.parseInt(text_codigo.getText()),text_nombre_cliente.getText(),Integer.parseInt(text_vendedor.getText()));
+            cliente.insertCliente(Integer.parseInt(text_codigo.getText()),text_nombre_cliente.getText(),Integer.parseInt(text_vendedor.getText()));
             JOptionPane.showMessageDialog(null, "Cliente Agregado Exitosamente.", "Extio",JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException | NumberFormatException ex) {
             JOptionPane.showMessageDialog(null, "Error al Agregar Cliente.","Error",JOptionPane.ERROR_MESSAGE);
@@ -794,6 +796,7 @@ public class SistemaVentas extends javax.swing.JFrame {
        try {
         String pass = new String(pass_usuario.getPassword());
         ch = new ConnectionHandler(combo_server.getSelectedIndex(), text_usuario.getText(), pass);
+        cliente = new Cliente(ch.getConnection());
         JOptionPane.showMessageDialog(null, "Conexión Exitosa.", "Extio",JOptionPane.INFORMATION_MESSAGE);
        } catch (SQLException e){
            JOptionPane.showMessageDialog(null, "Error al Conectar.","Error",JOptionPane.ERROR_MESSAGE);
