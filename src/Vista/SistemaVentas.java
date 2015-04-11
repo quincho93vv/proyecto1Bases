@@ -25,6 +25,7 @@ public class SistemaVentas extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         pass_usuario = new javax.swing.JPasswordField();
         text_usuario = new javax.swing.JTextField();
+        btn_conectar = new javax.swing.JButton();
         panel_Clientes = new javax.swing.JPanel();
         panel_edit_add_cliente = new javax.swing.JPanel();
         cliente_aceptar = new javax.swing.JButton();
@@ -83,6 +84,7 @@ public class SistemaVentas extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Bienvenido");
 
         jLabel2.setText("Conexión:");
@@ -106,12 +108,19 @@ public class SistemaVentas extends javax.swing.JFrame {
             }
         });
 
+        btn_conectar.setText("Conectar");
+        btn_conectar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_conectarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panel_inicioLayout = new javax.swing.GroupLayout(panel_inicio);
         panel_inicio.setLayout(panel_inicioLayout);
         panel_inicioLayout.setHorizontalGroup(
             panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_inicioLayout.createSequentialGroup()
-                .addContainerGap(392, Short.MAX_VALUE)
+                .addContainerGap(343, Short.MAX_VALUE)
                 .addGroup(panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panel_inicioLayout.createSequentialGroup()
                         .addComponent(jLabel3)
@@ -123,8 +132,12 @@ public class SistemaVentas extends javax.swing.JFrame {
                     .addComponent(text_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pass_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(combo_server, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(295, Short.MAX_VALUE))
+                .addContainerGap(344, Short.MAX_VALUE))
             .addGroup(panel_inicioLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_conectar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_inicioLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -132,9 +145,9 @@ public class SistemaVentas extends javax.swing.JFrame {
         panel_inicioLayout.setVerticalGroup(
             panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_inicioLayout.createSequentialGroup()
-                .addContainerGap(94, Short.MAX_VALUE)
+                .addGap(76, 76, 76)
                 .addComponent(jLabel1)
-                .addGap(63, 63, 63)
+                .addGap(78, 78, 78)
                 .addGroup(panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(combo_server, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
@@ -146,7 +159,9 @@ public class SistemaVentas extends javax.swing.JFrame {
                 .addGroup(panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(pass_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addGap(245, 245, 245))
+                .addGap(18, 18, 18)
+                .addComponent(btn_conectar)
+                .addGap(204, 204, 204))
         );
 
         jTabbedPane1.addTab("Inicio", panel_inicio);
@@ -716,6 +731,10 @@ public class SistemaVentas extends javax.swing.JFrame {
 
     }//GEN-LAST:event_text_usuarioActionPerformed
 
+    private void btn_conectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_conectarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_conectarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane JScrollPane11;
@@ -723,6 +742,7 @@ public class SistemaVentas extends javax.swing.JFrame {
     private javax.swing.JButton btn_cli_borrar;
     private javax.swing.JButton btn_cli_consulta;
     private javax.swing.JButton btn_cli_modificar;
+    private javax.swing.JButton btn_conectar;
     private javax.swing.JButton btn_fac_agregar;
     private javax.swing.JButton btn_fac_borrar;
     private javax.swing.JButton btn_fac_consulta;
