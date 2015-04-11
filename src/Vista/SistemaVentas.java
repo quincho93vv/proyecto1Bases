@@ -732,7 +732,7 @@ public class SistemaVentas extends javax.swing.JFrame {
     }//GEN-LAST:event_text_usuarioActionPerformed
 
     private void btn_conectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_conectarActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_btn_conectarActionPerformed
 
 
