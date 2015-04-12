@@ -3,9 +3,9 @@
 -- Modelo Version	: 1
 -- Fecha			: 10/04/2015
 -- DBA's			:	*Alonso Navarro Camareno
---						*Jose Joaquin Vasquez Chaves
---						*Mario Romero Sandoval
--- Servidor		    : PostgreSQL 9.4
+--						  *Jose Joaquin Vasquez Chaves
+--						  *Mario Romero Sandoval
+-- Servidor   : PostgreSQL 9.4
 -----------------------------------------------------------
 
 CREATE TABLE Vendedores(
@@ -51,68 +51,18 @@ CREATE TABLE Detalles(
 );
 
 
-drop function insertarVandedor(xcodigo int,xnombre varchar(30),xtotalVendido float);
-
-----                           PROCEDIMIENTO VENDEDOR
--- Insertar
-CREATE OR REPLACE FUNCTION insertarVendedor(xcodigo int,xnombre varchar(30),xtotalVendido float)
-RETURNS void AS $$
-    BEGIN
-      INSERT INTO vendedores (codigo,nombre ,totalVendido) 
-      VALUES (xcodigo,xnombre,xtotalVendido);
-    END;
-    $$ LANGUAGE plpgsql;
--- Editar
-CREATE OR REPLACE FUNCTION editarVendedor(xcodigo int,xnombre varchar(30),xtotalVendido float)
-RETURNS void AS $$
-    BEGIN
-      UPDATE vendedores
-      SET nombre = xnombre ,totalVendido = xtotalvendido 
-      WHERE codigo = xcodigo;
-    END;
-    $$ LANGUAGE plpgsql;
--- Eliminar
-CREATE OR REPLACE FUNCTION borrarVendedor(xcodigo int)
-RETURNS void AS $$
-    BEGIN
-      DELETE FROM vendedores
-      WHERE codigo = xcodigo;
-    END;
-    $$ LANGUAGE plpgsql;
--- Selecccionar UNO
-CREATE OR REPLACE FUNCTION seleccionarVendedor(xcodigo int)
-RETURNS refcursor AS $$
-    DECLARE
-      ref refcursor;
-    BEGIN
-      OPEN ref FOR SELECT * FROM vendedores
-      WHERE vendedores.codigo = xcodigo;
-      RETURN ref;
-    END;
-    $$ LANGUAGE plpgsql;
-
--- Selecccionar TODOS
-CREATE OR REPLACE FUNCTION seleccionarTODOSVendedor()
-RETURNS refcursor AS $$
-    DECLARE
-      ref refcursor;
-    BEGIN
-      OPEN ref FOR SELECT * FROM vendedores;
-      RETURN ref;
-    END;
-    $$ LANGUAGE plpgsql;
-
 --                              PROCEDIMIENTOS CLIENTE
 -- Insertar
-CREATE OR REPLACE FUNCTION insertarCliente(xcodigo int,xnombre varchar(30),xvendedor int)
+CREATE OR REPLACE FUNCTION SP_001(xcodigo int,xnombre varchar(30),xvendedor int)
 RETURNS void AS $$
     BEGIN
       INSERT INTO clientes (codigo,nombre ,vendedor) 
       VALUES (xcodigo,xnombre,xvendedor);
     END;
     $$ LANGUAGE plpgsql;
+    
 -- Editar
-CREATE OR REPLACE FUNCTION editarCliente(xcodigo int,xnombre varchar(30),xvendedor int)
+CREATE OR REPLACE FUNCTION SP_002(xcodigo int,xnombre varchar(30),xvendedor int)
 RETURNS void AS $$
     BEGIN
       UPDATE clientes
@@ -120,16 +70,18 @@ RETURNS void AS $$
       WHERE codigo = xcodigo;
     END;
     $$ LANGUAGE plpgsql;
+    
 -- Eliminar
-CREATE OR REPLACE FUNCTION borrarCliente(xcodigo int)
+CREATE OR REPLACE FUNCTION SP_003(xcodigo int)
 RETURNS void AS $$
     BEGIN
       DELETE FROM clientes
       WHERE codigo = xcodigo;
     END;
     $$ LANGUAGE plpgsql;
+    
 -- Selecccionar UNO
-CREATE OR REPLACE FUNCTION seleccionarCliente(xcodigo int)
+CREATE OR REPLACE FUNCTION FS_001(xcodigo int)
 RETURNS refcursor AS $$
     DECLARE
       ref refcursor;
@@ -151,11 +103,60 @@ RETURNS refcursor AS $$
     END;
     $$ LANGUAGE plpgsql;
 
+----                           PROCEDIMIENTO VENDEDOR
+-- Insertar
+CREATE OR REPLACE FUNCTION SP_004(xcodigo int,xnombre varchar(30),xtotalVendido float)
+RETURNS void AS $$
+    BEGIN
+      INSERT INTO vendedores (codigo,nombre ,totalVendido) 
+      VALUES (xcodigo,xnombre,xtotalVendido);
+    END;
+    $$ LANGUAGE plpgsql;
+-- Editar
+CREATE OR REPLACE FUNCTION SP_005(xcodigo int,xnombre varchar(30),xtotalVendido float)
+RETURNS void AS $$
+    BEGIN
+      UPDATE vendedores
+      SET nombre = xnombre ,totalVendido = xtotalvendido 
+      WHERE codigo = xcodigo;
+    END;
+    $$ LANGUAGE plpgsql;
+-- Eliminar
+CREATE OR REPLACE FUNCTION SP_006(xcodigo int)
+RETURNS void AS $$
+    BEGIN
+      DELETE FROM vendedores
+      WHERE codigo = xcodigo;
+    END;
+    $$ LANGUAGE plpgsql;
+-- Selecccionar UNO
+CREATE OR REPLACE FUNCTION FS_002(xcodigo int)
+RETURNS refcursor AS $$
+    DECLARE
+      ref refcursor;
+    BEGIN
+      OPEN ref FOR SELECT * FROM vendedores
+      WHERE vendedores.codigo = xcodigo;
+      RETURN ref;
+    END;
+    $$ LANGUAGE plpgsql;
+
+-- Selecccionar TODOS
+CREATE OR REPLACE FUNCTION seleccionarTODOSVendedor()
+RETURNS refcursor AS $$
+    DECLARE
+      ref refcursor;
+    BEGIN
+      OPEN ref FOR SELECT * FROM vendedores;
+      RETURN ref;
+    END;
+    $$ LANGUAGE plpgsql;
+
 
 --                              PROCEDIMIENTOS FACTURA
 
 -- Insertar
-CREATE OR REPLACE FUNCTION insertarFactura(xnumero int,	xtipo varchar(2),xfecha date,xtotal float,xcliente int)
+CREATE OR REPLACE FUNCTION SP_007(xnumero int,	xtipo varchar(2),xfecha date,xtotal float,xcliente int)
 RETURNS void AS $$
     BEGIN
       INSERT INTO facturas (numero,tipo,fecha,total,cliente) 
@@ -163,7 +164,7 @@ RETURNS void AS $$
     END;
     $$ LANGUAGE plpgsql;
 -- Editar
-CREATE OR REPLACE FUNCTION editarFactura(xnumero int,xtipo varchar(2),xfecha date,xtotal float,xcliente int)
+CREATE OR REPLACE FUNCTION SP_008(xnumero int,xtipo varchar(2),xfecha date,xtotal float,xcliente int)
 RETURNS void AS $$
     BEGIN
       UPDATE facturas
@@ -172,7 +173,7 @@ RETURNS void AS $$
     END;
     $$ LANGUAGE plpgsql;
 -- Eliminar
-CREATE OR REPLACE FUNCTION borrarFactura(xnumero int)
+CREATE OR REPLACE FUNCTION SP_009(xnumero int)
 RETURNS void AS $$
     BEGIN
       DELETE FROM facturas
@@ -180,7 +181,7 @@ RETURNS void AS $$
     END;
     $$ LANGUAGE plpgsql;
 -- Selecccionar UNO
-CREATE OR REPLACE FUNCTION seleccionarFactura(xnumero int)
+CREATE OR REPLACE FUNCTION FS_003(xnumero int)
 RETURNS refcursor AS $$
     DECLARE
       ref refcursor;
@@ -204,7 +205,7 @@ RETURNS refcursor AS $$
 
 --                              PROCEDIMIENTOS DETALLE
 -- Insertar
-CREATE OR REPLACE FUNCTION insertarDetalle(xproducto int,xfactura int,xcantidad int,xtotal float)
+CREATE OR REPLACE FUNCTION SP_010(xproducto int,xfactura int,xcantidad int,xtotal float)
 RETURNS void AS $$
     BEGIN
       INSERT INTO detalles (producto,factura,cantidad,total) 
@@ -212,7 +213,7 @@ RETURNS void AS $$
     END;
     $$ LANGUAGE plpgsql;
 -- Editar
-CREATE OR REPLACE FUNCTION editarDetalle(xproducto int,xfactura int,xcantidad int,xtotal float)
+CREATE OR REPLACE FUNCTION SP_011(xproducto int,xfactura int,xcantidad int,xtotal float)
 RETURNS void AS $$
     BEGIN
       UPDATE detalles
@@ -221,7 +222,7 @@ RETURNS void AS $$
     END;
     $$ LANGUAGE plpgsql;
 -- Eliminar
-CREATE OR REPLACE FUNCTION borrarDetalle(xproducto int,xfactura int)
+CREATE OR REPLACE FUNCTION SP_012(xproducto int,xfactura int)
 RETURNS void AS $$
     BEGIN
       DELETE FROM detalles
@@ -229,7 +230,7 @@ RETURNS void AS $$
     END;
     $$ LANGUAGE plpgsql;
 -- Selecccionar UNO
-CREATE OR REPLACE FUNCTION seleccionarDetalle(xproducto int,xfactura int)
+CREATE OR REPLACE FUNCTION FS_004(xproducto int,xfactura int)
 RETURNS refcursor AS $$
     DECLARE
       ref refcursor;
@@ -254,7 +255,7 @@ RETURNS refcursor AS $$
 
 --                              PROCEDIMIENTOS PRODUCTO
 -- Insertar
-CREATE OR REPLACE FUNCTION insertarProducto(xcodigo int,xnombre varchar(30),xprecio float)
+CREATE OR REPLACE FUNCTION SP_013(xcodigo int,xnombre varchar(30),xprecio float)
 RETURNS void AS $$
     BEGIN
       INSERT INTO productos (codigo,nombre ,precio) 
@@ -262,7 +263,7 @@ RETURNS void AS $$
     END;
     $$ LANGUAGE plpgsql;
 -- Editar
-CREATE OR REPLACE FUNCTION editarProducto(xcodigo int,xnombre varchar(30),xprecio int)
+CREATE OR REPLACE FUNCTION SP_014(xcodigo int,xnombre varchar(30),xprecio int)
 RETURNS void AS $$
     BEGIN
       UPDATE productos
@@ -271,7 +272,7 @@ RETURNS void AS $$
     END;
     $$ LANGUAGE plpgsql;
 -- Eliminar
-CREATE OR REPLACE FUNCTION borrarProducto(xcodigo int)
+CREATE OR REPLACE FUNCTION SP_015(xcodigo int)
 RETURNS void AS $$
     BEGIN
       DELETE FROM productos
@@ -279,7 +280,7 @@ RETURNS void AS $$
     END;
     $$ LANGUAGE plpgsql;
 -- Selecccionar UNO
-CREATE OR REPLACE FUNCTION seleccionarProducto(xcodigo int)
+CREATE OR REPLACE FUNCTION FS_005(xcodigo int)
 RETURNS refcursor AS $$
     DECLARE
       ref refcursor;
@@ -301,8 +302,4 @@ RETURNS refcursor AS $$
     END;
     $$ LANGUAGE plpgsql;
 
-
-select insertarVendedor(1,'Mario',15000);
-
-select * from vendedores;
     
