@@ -4,6 +4,7 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import oracle.jdbc.OracleTypes;
 
 public class Cliente {
@@ -45,9 +46,12 @@ public class Cliente {
                                            // (con atributos definidos) o una lista o alguna otra cosa
         
         cs = connection.prepareCall("{? = call FS_001(?)}");
-        cs.registerOutParameter(1, OracleTypes.CURSOR);
+        if(connection.getMetaData().getURL().equals("jdbc:oracle:thin:@localhost:1521:xe"))
+            cs.registerOutParameter(1, OracleTypes.CURSOR);
+        else
+            cs.registerOutParameter(1, Types.OTHER);
         cs.setInt(2, codigo);
-        cs.executeUpdate();
+        cs.execute();
         ResultSet rs = (ResultSet) cs.getObject(1);
         while (rs.next()) {
             result[0] = rs.getInt("Codigo");

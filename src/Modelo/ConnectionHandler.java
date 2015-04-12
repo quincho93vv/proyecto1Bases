@@ -16,6 +16,7 @@ public class ConnectionHandler {
         this.user = user;
         this.password = pass;
         this.connection = DriverManager.getConnection(jdbcUrl, user, pass);
+        this.connection.setAutoCommit(false);
     }
 
     public Connection getConnection() {

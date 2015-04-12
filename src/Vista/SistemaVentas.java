@@ -816,6 +816,7 @@ public class SistemaVentas extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Cliente: \n\nNombre : "+ nom +"\nCodigo : "+cod+"\nVendeor : "+ ven , "Cliente "+ cod,JOptionPane.INFORMATION_MESSAGE);
         } catch(Exception e){
             JOptionPane.showMessageDialog(null, "Error al Consultar Cliente.","Error",JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
         }
     }//GEN-LAST:event_btn_cli_consultaActionPerformed
 

@@ -50,8 +50,9 @@ CREATE TABLE Detalles(
 	CONSTRAINT FKDetalles2 FOREIGN KEY(factura) REFERENCES Facturas
 );
 
--- Procedimientos y Funciones para Clientes
+--  Procedimientos y Funciones para Clientes
 
+-- INSERT
 CREATE OR REPLACE PROCEDURE  SP_001(XCodigo INT, XNombre VARCHAR, XVendedor INT)
 IS 
 BEGIN 
@@ -62,6 +63,7 @@ EXCEPTION
       raise_application_error (-20002,'DB: Error al Insertar Cliente.');
 END;
 
+-- UPDATE
 CREATE OR REPLACE PROCEDURE  SP_002(XCodigo INT, XNombre VARCHAR, XVendedor INT)
 IS 
 BEGIN 
@@ -72,6 +74,7 @@ EXCEPTION
       raise_application_error (-20002,'DB: Error al Actualizar Cliente.');
 END;
 
+-- DELETE
 CREATE OR REPLACE PROCEDURE  SP_003(XCodigo INT)
 IS 
 BEGIN 
@@ -82,6 +85,7 @@ EXCEPTION
       raise_application_error (-20002,'DB: Error al Eliminar Cliente.');
 END;
 
+-- SELECT
 CREATE OR REPLACE FUNCTION FS_001(XCodigo INT)
 RETURN SYS_REFCURSOR
 AS
@@ -93,10 +97,82 @@ EXCEPTION
    WHEN OTHERS THEN
       raise_application_error (-20002,'DB: Error al Consultar Cliente.');
 END;
-/
 
-select * from clientes;
+--  Procedimientos y Funciones para Vendedor
+
+-- INSERT
+CREATE OR REPLACE PROCEDURE  SP_004(XCodigo INT, XNombre VARCHAR, XVendedor INT)
+IS 
+BEGIN 
+      INSERT INTO Vendedores VALUES (XCodigo, XNombre, XVendedor);
+      COMMIT;
+EXCEPTION
+   WHEN OTHERS THEN
+      raise_application_error (-20002,'DB: Error al Insertar Cliente.');
+END;
+
+-- UPDATE
+CREATE OR REPLACE PROCEDURE  SP_005(XCodigo INT, XNombre VARCHAR, XVendedor INT)
+IS 
+BEGIN 
+      UPDATE Clientes SET Nombre = XNombre, Vendedor = XVendedor WHERE Codigo = XCodigo;
+      COMMIT;
+EXCEPTION
+   WHEN OTHERS THEN
+      raise_application_error (-20002,'DB: Error al Actualizar Cliente.');
+END;
+
+-- DELETE
+CREATE OR REPLACE PROCEDURE  SP_006(XCodigo INT)
+IS 
+BEGIN 
+      DELETE FROM Clientes WHERE Codigo = XCodigo;
+      COMMIT;
+EXCEPTION
+   WHEN OTHERS THEN
+      raise_application_error (-20002,'DB: Error al Eliminar Cliente.');
+END;
+
+-- SELECT
+CREATE OR REPLACE FUNCTION FS_002(XCodigo INT)
+RETURN SYS_REFCURSOR
+AS
+      R SYS_REFCURSOR;
+BEGIN 
+      OPEN R FOR SELECT Codigo, Nombre, Vendedor FROM Clientes  WHERE Codigo = XCodigo;
+      RETURN R;
+EXCEPTION
+   WHEN OTHERS THEN
+      raise_application_error (-20002,'DB: Error al Consultar Cliente.');
+END;
 
 
+--  Procedimientos y Funciones para Factura
 
+-- INSERT
 
+-- UPDATE
+
+-- DELETE
+
+-- SELECT
+
+--  Procedimientos y Funciones para Detalle
+
+-- INSERT
+
+-- UPDATE
+
+-- DELETE
+
+-- SELECT
+
+--  Procedimientos y Funciones para Producto
+
+-- INSERT
+
+-- UPDATE
+
+-- DELETE
+
+-- SELECT
