@@ -98,6 +98,20 @@ EXCEPTION
       raise_application_error (-20002,'DB: Error al Consultar Cliente.');
 END;
 
+--SELECT *
+CREATE OR REPLACE FUNCTION seleccionarTODOSCliente
+RETURN SYS_REFCURSOR
+AS
+      R SYS_REFCURSOR;
+BEGIN 
+      OPEN R FOR SELECT Codigo, Nombre, Vendedor FROM Clientes;
+      RETURN R;
+EXCEPTION
+   WHEN OTHERS THEN
+      raise_application_error (-20002,'DB: Error al Consultar Cliente.');
+END;
+
+
 --  Procedimientos y Funciones para Vendedor
 
 -- INSERT
@@ -146,6 +160,18 @@ EXCEPTION
       raise_application_error (-20002,'DB: Error al Consultar Vendedor.');
 END;
 
+--SELECT *
+CREATE OR REPLACE FUNCTION seleccionarTODOSVendedor
+RETURN SYS_REFCURSOR
+AS
+      R SYS_REFCURSOR;
+BEGIN 
+      OPEN R FOR SELECT Codigo, Nombre, TotalVendido FROM Vendedores;
+      RETURN R;
+EXCEPTION
+   WHEN OTHERS THEN
+      raise_application_error (-20002,'DB: Error al Consultar Vendedor.');
+END;
 
 --  Procedimientos y Funciones para Factura
 
@@ -195,6 +221,20 @@ EXCEPTION
       raise_application_error (-20002,'DB: Error al Consultar Facturas.');
 END;
 
+--SELECT *
+CREATE OR REPLACE FUNCTION seleccionarTODOSFactura
+RETURN SYS_REFCURSOR
+AS
+      R SYS_REFCURSOR;
+BEGIN 
+      OPEN R FOR SELECT Numero, Tipo, Fecha, Total, Cliente FROM Facturas;
+      RETURN R;
+EXCEPTION
+   WHEN OTHERS THEN
+      raise_application_error (-20002,'DB: Error al Consultar Facturas.');
+END;
+
+
 --  Procedimientos y Funciones para Detalle
 
 -- INSERT
@@ -237,6 +277,19 @@ AS
       R SYS_REFCURSOR;
 BEGIN 
       OPEN R FOR SELECT Producto, Factura, Cantidad, Total FROM Detalles  WHERE Producto = XProducto AND Factura = XFactura;
+      RETURN R;
+EXCEPTION
+   WHEN OTHERS THEN
+      raise_application_error (-20002,'DB: Error al Consultar Detalles.');
+END;
+
+-- SELECT *
+CREATE OR REPLACE FUNCTION seleccionarTODOSDetalle
+RETURN SYS_REFCURSOR
+AS
+      R SYS_REFCURSOR;
+BEGIN 
+      OPEN R FOR SELECT Producto, Factura, Cantidad, Total FROM Detalles;
       RETURN R;
 EXCEPTION
    WHEN OTHERS THEN
@@ -291,3 +344,20 @@ EXCEPTION
    WHEN OTHERS THEN
       raise_application_error (-20002,'DB: Error al Consultar Productos.');
 END;
+
+-- SELECT *
+CREATE OR REPLACE FUNCTION seleccionarTODOSProducto
+RETURN SYS_REFCURSOR
+AS
+      R SYS_REFCURSOR;
+BEGIN 
+      OPEN R FOR SELECT Codigo, Nombre, Precio FROM Productos;
+      RETURN R;
+EXCEPTION
+   WHEN OTHERS THEN
+      raise_application_error (-20002,'DB: Error al Consultar Productos.');
+END;
+
+
+select * from clientes;
+Select COUNT(*) From Vendedores;

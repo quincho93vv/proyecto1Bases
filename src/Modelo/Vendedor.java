@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package Modelo;
 
 import java.sql.CallableStatement;
@@ -8,40 +13,54 @@ import java.sql.Statement;
 import java.sql.Types;
 import oracle.jdbc.OracleTypes;
 
-public class Cliente {
+/**
+ *
+ * @author Alonso
+ */
+public class Vendedor {
 
     private Connection connection;
     private CallableStatement cs;
 
-    public Cliente(Connection connection) {
+    public Vendedor(Connection connection) {
         this.connection = connection;
     }
 
-    public void insertOrUpdateCliente(boolean insert, int codigo, String nombre, int vendedor) throws SQLException {
+    public void insertOrUpdateVendedor(boolean insert, int codigo, String nombre, float totalVendido) throws SQLException {
         if (insert) {
-            cs = connection.prepareCall("{call SP_001(?,?,?)}");
+            cs = connection.prepareCall("{call SP_004(?,?,?)}");
         } else {
-            cs = connection.prepareCall("{call SP_002(?,?,?)}");
+            cs = connection.prepareCall("{call SP_005(?,?,?)}");
         }
+
         cs.setInt(1, codigo);
         cs.setString(2, nombre);
-        cs.setInt(3, vendedor);
+        cs.setFloat(3, totalVendido);
+        cs.executeQuery();
+        cs.close();
+    }
+
+    public void updateVendedor(int codigo, String nombre, float totalVendido) throws SQLException {
+
+        cs.setInt(1, codigo);
+        cs.setString(2, nombre);
+        cs.setFloat(3, totalVendido);
         cs.executeUpdate();
         cs.close();
     }
 
-    public void deleteCliente(int codigo) throws SQLException {
-        cs = connection.prepareCall("{call SP_003(?)}");
+    public void deleteVendedor(int codigo) throws SQLException {
+        cs = connection.prepareCall("{call SP_006(?)}");
         cs.setInt(1, codigo);
         cs.executeUpdate();
         cs.close();
     }
 
-    public Object[] selectCliente(int codigo) throws SQLException {
+    public Object[] selectVendedor(int codigo) throws SQLException {
         Object[] result = new Object[3];  // En lugar de este array, se puede crear ya sea un Cliente cm tal 
         // (con atributos definidos) o una lista o alguna otra cosa
 
-        cs = connection.prepareCall("{? = call FS_001(?)}");
+        cs = connection.prepareCall("{? = call FS_002(?)}");
         if (connection.getMetaData().getURL().equals("jdbc:oracle:thin:@localhost:1521:xe")) {
             cs.registerOutParameter(1, OracleTypes.CURSOR);
         } else {
@@ -53,14 +72,15 @@ public class Cliente {
         while (rs.next()) {
             result[0] = rs.getInt("Codigo");
             result[1] = rs.getString("Nombre");
-            result[2] = rs.getInt("Vendedor");
+            result[2] = rs.getFloat("TotalVendido");
         }
         cs.close();
         return result;
     }
 
-    public Object[][] selectTodoCliente() throws SQLException {
-        cs = connection.prepareCall("{? = call seleccionarTODOSCliente}");
+    public Object[][] selectTodoVendedor() throws SQLException {
+
+        cs = connection.prepareCall("{? = call seleccionarTODOSVendedor}");
         if (connection.getMetaData().getURL().equals("jdbc:oracle:thin:@localhost:1521:xe")) {
             cs.registerOutParameter(1, OracleTypes.CURSOR);
         } else {
@@ -73,17 +93,17 @@ public class Cliente {
         while (rs.next()) {
             result[count][0] = rs.getInt("Codigo");
             result[count][1] = rs.getString("Nombre");
-            result[count][2] = rs.getInt("Vendedor");
+            result[count][2] = rs.getFloat("TotalVendido");
             count++;
         }
         cs.close();
         return result;
     }
 
-     public int size() throws SQLException {
+    public int size() throws SQLException {
         int c=0;
         Statement stm = connection.createStatement();
-        ResultSet s = stm.executeQuery("Select COUNT(*) From Clientes");
+        ResultSet s = stm.executeQuery("Select COUNT(*) From Vendedores");
         while(s.next()){
             c=s.getInt("COUNT(*)");
         }
