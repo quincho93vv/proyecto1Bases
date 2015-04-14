@@ -13,6 +13,7 @@ public class Vendedor {
 
     private Connection connection;
     private CallableStatement cs;
+    private int cod;
 
     public Vendedor(Connection connection) {
         this.connection = connection;
@@ -72,7 +73,7 @@ public class Vendedor {
 
     public Object[][] selectTodoVendedor() throws SQLException {
 
-        cs = connection.prepareCall("{? = call seleccionarTODOSVendedor}");
+        cs = connection.prepareCall("{? = call FS_007}");
         if (connection.getMetaData().getURL().equals("jdbc:oracle:thin:@localhost:1521:xe")) {
             cs.registerOutParameter(1, OracleTypes.CURSOR);
         } else {
@@ -100,5 +101,13 @@ public class Vendedor {
             c=s.getInt("COUNT(*)");
         }
         return c; 
+    }
+
+    public int getCod() {
+        return cod;
+    }
+
+    public void setCod(int cod) {
+        this.cod = cod;
     }
 }

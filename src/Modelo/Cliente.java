@@ -12,6 +12,7 @@ public class Cliente {
 
     private Connection connection;
     private CallableStatement cs;
+    private int cod;
 
     public Cliente(Connection connection) {
         this.connection = connection;
@@ -60,7 +61,7 @@ public class Cliente {
     }
 
     public Object[][] selectTodoCliente() throws SQLException {
-        cs = connection.prepareCall("{? = call seleccionarTODOSCliente}");
+        cs = connection.prepareCall("{? = call FS_006}");
         if (connection.getMetaData().getURL().equals("jdbc:oracle:thin:@localhost:1521:xe")) {
             cs.registerOutParameter(1, OracleTypes.CURSOR);
         } else {
@@ -88,5 +89,13 @@ public class Cliente {
             c=s.getInt("COUNT(*)");
         }
         return c; 
+    }
+
+    public int getCod() {
+        return cod;
+    }
+
+    public void setCod(int cod) {
+        this.cod = cod;
     }
 }

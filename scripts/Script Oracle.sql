@@ -62,6 +62,7 @@ EXCEPTION
    WHEN OTHERS THEN
       raise_application_error (-20002,'DB: Error al Insertar Cliente.');
 END;
+/
 
 -- UPDATE
 CREATE OR REPLACE PROCEDURE  SP_002(XCodigo INT, XNombre VARCHAR, XVendedor INT)
@@ -73,6 +74,7 @@ EXCEPTION
    WHEN OTHERS THEN
       raise_application_error (-20002,'DB: Error al Actualizar Cliente.');
 END;
+/
 
 -- DELETE
 CREATE OR REPLACE PROCEDURE  SP_003(XCodigo INT)
@@ -84,6 +86,7 @@ EXCEPTION
    WHEN OTHERS THEN
       raise_application_error (-20002,'DB: Error al Eliminar Cliente.');
 END;
+/
 
 -- SELECT
 CREATE OR REPLACE FUNCTION FS_001(XCodigo INT)
@@ -97,9 +100,10 @@ EXCEPTION
    WHEN OTHERS THEN
       raise_application_error (-20002,'DB: Error al Consultar Cliente.');
 END;
+/
 
 --SELECT *
-CREATE OR REPLACE FUNCTION seleccionarTODOSCliente
+CREATE OR REPLACE FUNCTION FS_006
 RETURN SYS_REFCURSOR
 AS
       R SYS_REFCURSOR;
@@ -110,6 +114,22 @@ EXCEPTION
    WHEN OTHERS THEN
       raise_application_error (-20002,'DB: Error al Consultar Cliente.');
 END;
+/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 --  Procedimientos y Funciones para Vendedor
@@ -124,6 +144,7 @@ EXCEPTION
    WHEN OTHERS THEN
       raise_application_error (-20002,'DB: Error al Insertar Vendedor.');
 END;
+/
 
 -- UPDATE
 CREATE OR REPLACE PROCEDURE  SP_005(XCodigo INT, XNombre VARCHAR, XTotalVendido FLOAT)
@@ -135,6 +156,7 @@ EXCEPTION
    WHEN OTHERS THEN
       raise_application_error (-20002,'DB: Error al Actualizar Vendedor.');
 END;
+/
 
 -- DELETE
 CREATE OR REPLACE PROCEDURE  SP_006(XCodigo INT)
@@ -146,6 +168,7 @@ EXCEPTION
    WHEN OTHERS THEN
       raise_application_error (-20002,'DB: Error al Eliminar Vendedor.');
 END;
+/
 
 -- SELECT
 CREATE OR REPLACE FUNCTION FS_002(XCodigo INT)
@@ -159,9 +182,10 @@ EXCEPTION
    WHEN OTHERS THEN
       raise_application_error (-20002,'DB: Error al Consultar Vendedor.');
 END;
+/
 
 --SELECT *
-CREATE OR REPLACE FUNCTION seleccionarTODOSVendedor
+CREATE OR REPLACE FUNCTION FS_007
 RETURN SYS_REFCURSOR
 AS
       R SYS_REFCURSOR;
@@ -172,6 +196,20 @@ EXCEPTION
    WHEN OTHERS THEN
       raise_application_error (-20002,'DB: Error al Consultar Vendedor.');
 END;
+/
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 --  Procedimientos y Funciones para Factura
 
@@ -185,6 +223,7 @@ EXCEPTION
    WHEN OTHERS THEN
       raise_application_error (-20002,'DB: Error al Insertar Facturas.');
 END;
+/
 
 -- UPDATE
 CREATE OR REPLACE PROCEDURE  SP_008(XNumero INT, XTipo VARCHAR, XFecha Date, XTotal float, XCliente int)
@@ -196,6 +235,7 @@ EXCEPTION
    WHEN OTHERS THEN
       raise_application_error (-20002,'DB: Error al Actualizar Facturas.');
 END;
+/
 
 -- DELETE
 CREATE OR REPLACE PROCEDURE  SP_009(XNumero INT)
@@ -207,6 +247,7 @@ EXCEPTION
    WHEN OTHERS THEN
       raise_application_error (-20002,'DB: Error al Eliminar Facturas.');
 END;
+/
 
 -- SELECT
 CREATE OR REPLACE FUNCTION FS_003(XNumero INT)
@@ -220,9 +261,10 @@ EXCEPTION
    WHEN OTHERS THEN
       raise_application_error (-20002,'DB: Error al Consultar Facturas.');
 END;
+/
 
 --SELECT *
-CREATE OR REPLACE FUNCTION seleccionarTODOSFactura
+CREATE OR REPLACE FUNCTION FS_008
 RETURN SYS_REFCURSOR
 AS
       R SYS_REFCURSOR;
@@ -233,6 +275,17 @@ EXCEPTION
    WHEN OTHERS THEN
       raise_application_error (-20002,'DB: Error al Consultar Facturas.');
 END;
+/
+
+
+
+
+
+
+
+
+
+
 
 
 --  Procedimientos y Funciones para Detalle
@@ -247,6 +300,7 @@ EXCEPTION
    WHEN OTHERS THEN
       raise_application_error (-20002,'DB: Error al Insertar Detalles.');
 END;
+/
 
 -- UPDATE
 CREATE OR REPLACE PROCEDURE  SP_011(XProducto INT, XFactura INT, XCantidad INT, XTotal FLOAT)
@@ -258,6 +312,7 @@ EXCEPTION
    WHEN OTHERS THEN
       raise_application_error (-20002,'DB: Error al Actualizar Detalles.');
 END;
+/
 
 -- DELETE
 CREATE OR REPLACE PROCEDURE  SP_012(XProducto INT, XFactura INT)
@@ -269,6 +324,7 @@ EXCEPTION
    WHEN OTHERS THEN
       raise_application_error (-20002,'DB: Error al Eliminar Detalles.');
 END;
+/
 
 -- SELECT
 CREATE OR REPLACE FUNCTION FS_004(XProducto INT, XFactura INT)
@@ -282,9 +338,10 @@ EXCEPTION
    WHEN OTHERS THEN
       raise_application_error (-20002,'DB: Error al Consultar Detalles.');
 END;
+/
 
 -- SELECT *
-CREATE OR REPLACE FUNCTION seleccionarTODOSDetalle
+CREATE OR REPLACE FUNCTION FS_009
 RETURN SYS_REFCURSOR
 AS
       R SYS_REFCURSOR;
@@ -295,6 +352,16 @@ EXCEPTION
    WHEN OTHERS THEN
       raise_application_error (-20002,'DB: Error al Consultar Detalles.');
 END;
+/
+
+
+
+
+
+
+
+
+
 
 
 --  Procedimientos y Funciones para Producto
@@ -309,7 +376,8 @@ EXCEPTION
    WHEN OTHERS THEN
       raise_application_error (-20002,'DB: Error al Insertar Productos.');
 END;
-
+/
+ 
 -- UPDATE
 CREATE OR REPLACE PROCEDURE  SP_014(XCodigo INT, XNombre VARCHAR, XPrecio FLOAT)
 IS 
@@ -320,6 +388,7 @@ EXCEPTION
    WHEN OTHERS THEN
       raise_application_error (-20002,'DB: Error al Actualizar Productos.');
 END;
+/
 
 -- DELETE
 CREATE OR REPLACE PROCEDURE  SP_015(XCodigo INT)
@@ -331,6 +400,7 @@ EXCEPTION
    WHEN OTHERS THEN
       raise_application_error (-20002,'DB: Error al Eliminar Productos.');
 END;
+/
 
 -- SELECT
 CREATE OR REPLACE FUNCTION FS_005(XCodigo INT)
@@ -344,9 +414,10 @@ EXCEPTION
    WHEN OTHERS THEN
       raise_application_error (-20002,'DB: Error al Consultar Productos.');
 END;
+/
 
 -- SELECT *
-CREATE OR REPLACE FUNCTION seleccionarTODOSProducto
+CREATE OR REPLACE FUNCTION FS_010
 RETURN SYS_REFCURSOR
 AS
       R SYS_REFCURSOR;
@@ -357,7 +428,14 @@ EXCEPTION
    WHEN OTHERS THEN
       raise_application_error (-20002,'DB: Error al Consultar Productos.');
 END;
+/
 
+drop table detalles;
+drop table facturas;
+drop table clientes;
+drop table vendedores;
+drop table productos;
 
-select * from clientes;
-Select COUNT(*) From Vendedores;
+select * from facturas;
+commit;
+

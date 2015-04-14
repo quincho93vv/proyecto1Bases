@@ -93,7 +93,7 @@ RETURNS refcursor AS $$
     $$ LANGUAGE plpgsql;
 
 -- Selecccionar TODOS
-CREATE OR REPLACE FUNCTION seleccionarTODOSCliente()
+CREATE OR REPLACE FUNCTION FS_006()
 RETURNS refcursor AS $$
     DECLARE
       ref refcursor;
@@ -103,6 +103,13 @@ RETURNS refcursor AS $$
     END;
     $$ LANGUAGE plpgsql;
 
+	
+	
+	
+	
+	
+	
+	
 ----                           PROCEDIMIENTO VENDEDOR
 -- Insertar
 CREATE OR REPLACE FUNCTION SP_004(xcodigo int,xnombre varchar(30),xtotalVendido float)
@@ -142,7 +149,7 @@ RETURNS refcursor AS $$
     $$ LANGUAGE plpgsql;
 
 -- Selecccionar TODOS
-CREATE OR REPLACE FUNCTION seleccionarTODOSVendedor()
+CREATE OR REPLACE FUNCTION FS_007()
 RETURNS refcursor AS $$
     DECLARE
       ref refcursor;
@@ -153,6 +160,15 @@ RETURNS refcursor AS $$
     $$ LANGUAGE plpgsql;
 
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
 --                              PROCEDIMIENTOS FACTURA
 
 -- Insertar
@@ -193,7 +209,7 @@ RETURNS refcursor AS $$
     $$ LANGUAGE plpgsql;
 
 -- Selecccionar TODOS
-CREATE OR REPLACE FUNCTION seleccionarTODOSFacturas()
+CREATE OR REPLACE FUNCTION FS_008()
 RETURNS refcursor AS $$
     DECLARE
       ref refcursor;
@@ -203,6 +219,15 @@ RETURNS refcursor AS $$
     END;
     $$ LANGUAGE plpgsql;
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
 --                              PROCEDIMIENTOS DETALLE
 -- Insertar
 CREATE OR REPLACE FUNCTION SP_010(xproducto int,xfactura int,xcantidad int,xtotal float)
@@ -242,7 +267,7 @@ RETURNS refcursor AS $$
     $$ LANGUAGE plpgsql;
 
 -- Selecccionar TODOS
-CREATE OR REPLACE FUNCTION seleccionarTODOSDetalle()
+CREATE OR REPLACE FUNCTION FS_009()
 RETURNS refcursor AS $$
     DECLARE
       ref refcursor;
@@ -253,6 +278,15 @@ RETURNS refcursor AS $$
     $$ LANGUAGE plpgsql;
 
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
 --                              PROCEDIMIENTOS PRODUCTO
 -- Insertar
 CREATE OR REPLACE FUNCTION SP_013(xcodigo int,xnombre varchar(30),xprecio float)
@@ -292,7 +326,7 @@ RETURNS refcursor AS $$
     $$ LANGUAGE plpgsql;
 
 -- Selecccionar TODOS
-CREATE OR REPLACE FUNCTION seleccionarTODOSProducto()
+CREATE OR REPLACE FUNCTION FS_010()
 RETURNS refcursor AS $$
     DECLARE
       ref refcursor;

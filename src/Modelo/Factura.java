@@ -13,20 +13,21 @@ public class Factura {
 
     private Connection connection;
     private CallableStatement cs;
+    private int cod;
 
     public Factura(Connection connection) {
         this.connection = connection;
     }
 
-    public void insertOrUpdateFactura(boolean insert, int numero, int tipo, String fecha, float total, int cliente) throws SQLException {
+    public void insertOrUpdateFactura(boolean insert, int numero, String tipo, Date fecha, float total, int cliente) throws SQLException {
         if (insert) {
-            cs = connection.prepareCall("{call SP_007(?,?,?)}");
+            cs = connection.prepareCall("{call SP_007(?,?,?,?,?)}");
         }else{
-            cs = connection.prepareCall("{call SP_008(?,?,?)}");
+            cs = connection.prepareCall("{call SP_008(?,?,?,?,?)}");
         }
         cs.setInt(1, numero);
-        cs.setInt(2, tipo);
-        cs.setString(3, fecha);
+        cs.setString(2, tipo);
+        cs.setDate(3, fecha);
         cs.setFloat(4, total);
         cs.setInt(5, cliente);
         cs.executeUpdate();
@@ -41,7 +42,7 @@ public class Factura {
     }
 
     public Object[] selectFactura(int codigo) throws SQLException {
-        Object[] result = new Object[3];  // En lugar de este array, se puede crear ya sea un Cliente cm tal 
+        Object[] result = new Object[5];  // En lugar de este array, se puede crear ya sea un Cliente cm tal 
         // (con atributos definidos) o una lista o alguna otra cosa
 
         cs = connection.prepareCall("{? = call FS_003(?)}");
@@ -55,8 +56,8 @@ public class Factura {
         ResultSet rs = (ResultSet) cs.getObject(1);
         while (rs.next()) {
             result[0] = rs.getInt("Numero");
-            result[1] = rs.getInt("Tipo");
-            result[2] = rs.getString("Fecha");
+            result[1] = rs.getString("Tipo");
+            result[2] = rs.getDate("Fecha");
             result[3] = rs.getFloat("Total");
             result[4] = rs.getInt("Cliente");
         }
@@ -67,7 +68,7 @@ public class Factura {
     
     public Object[][] selectTodoFactura() throws SQLException {
 
-        cs = connection.prepareCall("{? = call seleccionarTODOSFactura}");
+        cs = connection.prepareCall("{? = call FS_008}");
         if (connection.getMetaData().getURL().equals("jdbc:oracle:thin:@localhost:1521:xe")) {
             cs.registerOutParameter(1, OracleTypes.CURSOR);
         } else {
@@ -75,7 +76,7 @@ public class Factura {
         }
         cs.execute();
         ResultSet rs = (ResultSet) cs.getObject(1);
-        Object[][] result = new Object[size()][3];
+        Object[][] result = new Object[size()][5];
         int count = 0;
         while (rs.next()) {
             result[count][0] = rs.getInt("Numero");
@@ -97,5 +98,13 @@ public class Factura {
             c=s.getInt("COUNT(*)");
         }
         return c; 
+    }
+
+    public int getCod() {
+        return cod;
+    }
+
+    public void setCod(int cod) {
+        this.cod = cod;
     }
 }

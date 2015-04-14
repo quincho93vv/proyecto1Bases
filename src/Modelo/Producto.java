@@ -12,6 +12,7 @@ import oracle.jdbc.OracleTypes;
 public class Producto {
     private Connection connection;
     private CallableStatement cs;
+    private int cod;
 
     public Producto(Connection connection) {
         this.connection = connection;
@@ -62,7 +63,7 @@ public class Producto {
     
     public Object[][] selectTodoProducto() throws SQLException {
 
-        cs = connection.prepareCall("{? = call seleccionarTODOSProducto}");
+        cs = connection.prepareCall("{? = call FS_010}");
         if (connection.getMetaData().getURL().equals("jdbc:oracle:thin:@localhost:1521:xe")) {
             cs.registerOutParameter(1, OracleTypes.CURSOR);
         } else {
@@ -90,6 +91,14 @@ public class Producto {
             c=s.getInt("COUNT(*)");
         }
         return c; 
+    }
+
+    public int getCod() {
+        return cod;
+    }
+
+    public void setCod(int cod) {
+        this.cod = cod;
     }
     
 }
