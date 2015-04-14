@@ -145,28 +145,32 @@ public class SistemaVentas extends javax.swing.JFrame {
         panel_inicioLayout.setHorizontalGroup(
             panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_inicioLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(350, Short.MAX_VALUE)
                 .addGroup(panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(panel_inicioLayout.createSequentialGroup()
-                        .addGroup(panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4))
-                        .addGap(18, 18, 18)
-                        .addGroup(panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(text_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pass_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(combo_server, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(btn_conectar))
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4))
+                .addGap(18, 18, 18)
+                .addGroup(panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(text_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pass_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(combo_server, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(351, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_inicioLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_conectar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_inicioLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panel_inicioLayout.setVerticalGroup(
             panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_inicioLayout.createSequentialGroup()
-                .addGap(75, 75, 75)
+                .addGap(85, 85, 85)
                 .addComponent(jLabel1)
-                .addGap(79, 79, 79)
+                .addGap(69, 69, 69)
                 .addGroup(panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(combo_server, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
@@ -178,9 +182,9 @@ public class SistemaVentas extends javax.swing.JFrame {
                 .addGroup(panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(pass_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addGap(38, 38, 38)
+                .addGap(37, 37, 37)
                 .addComponent(btn_conectar)
-                .addContainerGap(255, Short.MAX_VALUE))
+                .addContainerGap(265, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Inicio", panel_inicio);
@@ -310,11 +314,15 @@ public class SistemaVentas extends javax.swing.JFrame {
                     .addGroup(panel_ClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(btn_cli_modificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btn_cli_borrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(73, 73, 73)
                 .addGroup(panel_ClientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panel_edit_add_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(123, Short.MAX_VALUE))
+                    .addGroup(panel_ClientesLayout.createSequentialGroup()
+                        .addGap(73, 73, 73)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(123, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_ClientesLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(panel_edit_add_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         panel_ClientesLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btn_cli_agregar, btn_cli_borrar, btn_cli_consulta, btn_cli_modificar});
@@ -335,9 +343,9 @@ public class SistemaVentas extends javax.swing.JFrame {
                     .addGroup(panel_ClientesLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(panel_edit_add_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addContainerGap(95, Short.MAX_VALUE))
         );
 
         panel_ClientesLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btn_cli_agregar, btn_cli_borrar, btn_cli_consulta, btn_cli_modificar});
@@ -396,7 +404,7 @@ public class SistemaVentas extends javax.swing.JFrame {
         panel_edit_add_vendedorLayout.setVerticalGroup(
             panel_edit_add_vendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_edit_add_vendedorLayout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(21, Short.MAX_VALUE)
                 .addGroup(panel_edit_add_vendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
                     .addComponent(text_codigov, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -462,18 +470,20 @@ public class SistemaVentas extends javax.swing.JFrame {
         panel_VendedoresLayout.setHorizontalGroup(
             panel_VendedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_VendedoresLayout.createSequentialGroup()
-                .addGap(43, 43, 43)
+                .addGap(277, 277, 277)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(75, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_VendedoresLayout.createSequentialGroup()
+                .addGap(44, 44, 44)
                 .addGroup(panel_VendedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_VendedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(btn_ven_modificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btn_ven_agregar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btn_ven_borrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(btn_ven_consulta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(95, 95, 95)
-                .addGroup(panel_VendedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panel_edit_add_vendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panel_edit_add_vendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         panel_VendedoresLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btn_ven_agregar, btn_ven_borrar, btn_ven_consulta, btn_ven_modificar});
@@ -481,20 +491,22 @@ public class SistemaVentas extends javax.swing.JFrame {
         panel_VendedoresLayout.setVerticalGroup(
             panel_VendedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_VendedoresLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panel_VendedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(panel_VendedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_VendedoresLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(panel_edit_add_vendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panel_VendedoresLayout.createSequentialGroup()
+                        .addGap(68, 68, 68)
                         .addComponent(btn_ven_agregar)
                         .addGap(18, 18, 18)
                         .addComponent(btn_ven_consulta)
                         .addGap(18, 18, 18)
                         .addComponent(btn_ven_modificar)
                         .addGap(26, 26, 26)
-                        .addComponent(btn_ven_borrar))
-                    .addComponent(panel_edit_add_vendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btn_ven_borrar)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(120, Short.MAX_VALUE))
+                .addContainerGap(118, Short.MAX_VALUE))
         );
 
         panel_VendedoresLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btn_ven_agregar, btn_ven_borrar, btn_ven_consulta, btn_ven_modificar});
@@ -624,11 +636,15 @@ public class SistemaVentas extends javax.swing.JFrame {
                         .addComponent(btn_pro_consulta, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(btn_pro_agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_pro_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
                 .addGroup(panel_ProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panel_edit_add_productos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(JScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 518, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(101, 101, 101))
+                    .addGroup(panel_ProductosLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                        .addComponent(JScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 518, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(101, 101, 101))
+                    .addGroup(panel_ProductosLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(panel_edit_add_productos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
         panel_ProductosLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btn_pro_agregar, btn_pro_borrar, btn_pro_consulta, btn_pro_modificar});
@@ -638,18 +654,19 @@ public class SistemaVentas extends javax.swing.JFrame {
             .addGroup(panel_ProductosLayout.createSequentialGroup()
                 .addGroup(panel_ProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_ProductosLayout.createSequentialGroup()
-                        .addGap(59, 59, 59)
+                        .addGap(68, 68, 68)
                         .addComponent(btn_pro_agregar)
                         .addGap(18, 18, 18)
                         .addComponent(btn_pro_consulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btn_pro_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btn_pro_borrar))
-                    .addGroup(panel_ProductosLayout.createSequentialGroup()
+                        .addComponent(btn_pro_borrar)
+                        .addGap(27, 27, 27))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_ProductosLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(panel_edit_add_productos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(panel_edit_add_productos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addComponent(JScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(124, Short.MAX_VALUE))
         );
@@ -718,7 +735,7 @@ public class SistemaVentas extends javax.swing.JFrame {
         panel_edit_add_facturaLayout.setVerticalGroup(
             panel_edit_add_facturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_edit_add_facturaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(16, Short.MAX_VALUE)
                 .addGroup(panel_edit_add_facturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
                     .addComponent(text_codigof, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -764,6 +781,11 @@ public class SistemaVentas extends javax.swing.JFrame {
 
         btn_fac_consulta.setText("Consultar Facturas");
         btn_fac_consulta.setPreferredSize(new java.awt.Dimension(139, 23));
+        btn_fac_consulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_fac_consultaActionPerformed(evt);
+            }
+        });
 
         jScrollPane3.setVisible(false);
         tabla_facturas.setVisible(false);
@@ -784,17 +806,19 @@ public class SistemaVentas extends javax.swing.JFrame {
         panel_FacturasLayout.setHorizontalGroup(
             panel_FacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_FacturasLayout.createSequentialGroup()
-                .addGap(43, 43, 43)
+                .addGap(247, 247, 247)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 529, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(115, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_FacturasLayout.createSequentialGroup()
+                .addGap(44, 44, 44)
                 .addGroup(panel_FacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn_fac_modificar, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_fac_borrar, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_fac_consulta, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_fac_agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(60, 60, 60)
-                .addGroup(panel_FacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panel_edit_add_factura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 529, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panel_edit_add_factura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         panel_FacturasLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btn_fac_agregar, btn_fac_borrar, btn_fac_consulta, btn_fac_modificar});
@@ -802,20 +826,22 @@ public class SistemaVentas extends javax.swing.JFrame {
         panel_FacturasLayout.setVerticalGroup(
             panel_FacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_FacturasLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panel_FacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(panel_FacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_FacturasLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(panel_edit_add_factura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panel_FacturasLayout.createSequentialGroup()
+                        .addGap(68, 68, 68)
                         .addComponent(btn_fac_agregar)
                         .addGap(18, 18, 18)
                         .addComponent(btn_fac_consulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btn_fac_modificar)
                         .addGap(18, 18, 18)
-                        .addComponent(btn_fac_borrar))
-                    .addComponent(panel_edit_add_factura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(9, 9, 9)
+                        .addComponent(btn_fac_borrar)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(123, Short.MAX_VALUE))
+                .addContainerGap(126, Short.MAX_VALUE))
         );
 
         panel_FacturasLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btn_fac_agregar, btn_fac_borrar, btn_fac_consulta, btn_fac_modificar});
@@ -847,11 +873,12 @@ public class SistemaVentas extends javax.swing.JFrame {
         if(cliente_aceptar.getText().equals("Modificar"))cond=false;
         try {
             validaPanelCliente();
-            
+            System.out.println("COMBO: " + combo_vendedor.getSelectedIndex());
             cliente.insertOrUpdateCliente(cond, Integer.parseInt(text_codigoc.getText()), text_nombre_cliente.getText(), combo_vendedor.getSelectedIndex());
             JOptionPane.showMessageDialog(null, "Cliente Agregado Exitosamente.", "Extio", JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException | NumberFormatException ex) {
             JOptionPane.showMessageDialog(null, "Error al Agregar Cliente.", "Error", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
         }
     }//GEN-LAST:event_cliente_aceptarActionPerformed
 
@@ -954,11 +981,13 @@ public class SistemaVentas extends javax.swing.JFrame {
         panel_edit_add_cliente.setVisible(false);
         try {
             String codigoCliente = JOptionPane.showInputDialog(this, "Ingrese el codigo del cliente a consultar: \n", "Consultar Cliente", JOptionPane.QUESTION_MESSAGE);
-            Object[] r = cliente.selectCliente(Integer.parseInt(codigoCliente));
-            String cod = String.valueOf(r[0]);
-            String nom = (String) r[1];
-            String ven = String.valueOf(r[2]);
-            JOptionPane.showMessageDialog(null, "Cliente: \n\nNombre : " + nom + "\nCodigo : " + cod + "\nVendeor : " + ven, "Cliente " + cod, JOptionPane.INFORMATION_MESSAGE);
+            if(codigoCliente != null){
+                Object[] r = cliente.selectCliente(Integer.parseInt(codigoCliente));
+                String cod = String.valueOf(r[0]);
+                String nom = (String) r[1];
+                String ven = String.valueOf(r[2]);
+                JOptionPane.showMessageDialog(null, "Cliente: \n\nNombre : " + nom + "\nCodigo : " + cod + "\nVendeor : " + ven, "Cliente " + cod, JOptionPane.INFORMATION_MESSAGE);
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al Consultar Cliente.", "Error", JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
@@ -966,17 +995,20 @@ public class SistemaVentas extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_cli_consultaActionPerformed
 
     private void btn_cli_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cli_modificarActionPerformed
-        panel_edit_add_cliente.setVisible(true);
         cliente_aceptar.setText("Modificar");
         try {
             String codigoCliente = JOptionPane.showInputDialog(this, "Ingrese el codigo del cliente a modificar: \n", "Modificar Cliente", JOptionPane.QUESTION_MESSAGE);
-            Object[] r = cliente.selectCliente(Integer.parseInt(codigoCliente));
-            text_codigoc.setText(String.valueOf(r[0]));
-            text_nombre_cliente.setText((String) r[1]);
-            cargaCombo(combo_vendedor, vendedor.selectTodoVendedor());
-            combo_vendedor.setSelectedIndex((int)r[2]);
+            if(codigoCliente != null){
+                Object[] r = cliente.selectCliente(Integer.parseInt(codigoCliente));
+                text_codigoc.setText(String.valueOf(r[0]));
+                text_nombre_cliente.setText((String) r[1]);
+                cargaCombo(combo_vendedor, vendedor.selectTodoVendedor());
+                combo_vendedor.setSelectedIndex((int)r[2]);
+                panel_edit_add_cliente.setVisible(true);
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al Modificar Cliente.", "Error", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
         }
     }//GEN-LAST:event_btn_cli_modificarActionPerformed
 
@@ -984,8 +1016,10 @@ public class SistemaVentas extends javax.swing.JFrame {
         panel_edit_add_cliente.setVisible(false);
         try {
             String codigoCliente = JOptionPane.showInputDialog(this, "Ingrese el codigo del cliente a eliminar: \n", "Eliminar Cliente", JOptionPane.QUESTION_MESSAGE);
-            cliente.deleteCliente(Integer.parseInt(codigoCliente));
-            JOptionPane.showMessageDialog(null, "Cliente eliminado Correctamento.", "Extio", JOptionPane.INFORMATION_MESSAGE);
+            if(codigoCliente != null){
+                cliente.deleteCliente(Integer.parseInt(codigoCliente));
+                JOptionPane.showMessageDialog(null, "Cliente eliminado Correctamento.", "Extio", JOptionPane.INFORMATION_MESSAGE);
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al Eliminar Cliente.", "Error", JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
@@ -1019,11 +1053,13 @@ public class SistemaVentas extends javax.swing.JFrame {
         panel_edit_add_vendedor.setVisible(false);
         try {
             String codigoVendedor = JOptionPane.showInputDialog(this, "Ingrese el codigo del vendedor a consultar: \n", "Consultar Cliente", JOptionPane.QUESTION_MESSAGE);
-            Object[] r = vendedor.selectVendedor(Integer.parseInt(codigoVendedor));
-            String cod = String.valueOf(r[0]);
-            String nom = (String) r[1];
-            String ven = String.valueOf(r[2]);
-            JOptionPane.showMessageDialog(null, "Vendedor: \n\nNombre : " + nom + "\nCodigo : " + cod + "\nTotal Vendido : " + ven, "Vendedor " + cod, JOptionPane.INFORMATION_MESSAGE);
+            if(codigoVendedor != null){
+                Object[] r = vendedor.selectVendedor(Integer.parseInt(codigoVendedor));
+                String cod = String.valueOf(r[0]);
+                String nom = (String) r[1];
+                String ven = String.valueOf(r[2]);
+                JOptionPane.showMessageDialog(null, "Vendedor: \n\nNombre : " + nom + "\nCodigo : " + cod + "\nTotal Vendido : " + ven, "Vendedor " + cod, JOptionPane.INFORMATION_MESSAGE);
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al Consultar Vendedor.", "Error", JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
@@ -1032,14 +1068,16 @@ public class SistemaVentas extends javax.swing.JFrame {
 
     private void btn_ven_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ven_modificarActionPerformed
         // TODO add your handling code here:
-        panel_edit_add_vendedor.setVisible(true);
         vendedor_aceptar.setText("Modificar");
         try {
             String codigoVendedor = JOptionPane.showInputDialog(this, "Ingrese el codigo del vendedor a modificar: \n", "Modificar Cliente", JOptionPane.QUESTION_MESSAGE);
-            Object[] r = vendedor.selectVendedor(Integer.parseInt(codigoVendedor));
-            text_codigov.setText(String.valueOf(r[0]));
-            text_nombre_vendedor.setText((String) r[1]);
-            text_total_vendido.setText(String.valueOf(r[2]));
+            if(codigoVendedor != null){
+                Object[] r = vendedor.selectVendedor(Integer.parseInt(codigoVendedor));
+                text_codigov.setText(String.valueOf(r[0]));
+                text_nombre_vendedor.setText((String) r[1]);
+                text_total_vendido.setText(String.valueOf(r[2]));
+                panel_edit_add_vendedor.setVisible(true);
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al Modificar Vendedor.", "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -1050,8 +1088,10 @@ public class SistemaVentas extends javax.swing.JFrame {
         panel_edit_add_vendedor.setVisible(false);
         try {
             String codigoVendedor = JOptionPane.showInputDialog(this, "Ingrese el codigo del Vendedor a eliminar: \n", "Eliminar Cliente", JOptionPane.QUESTION_MESSAGE);
-            vendedor.deleteVendedor(Integer.parseInt(codigoVendedor));
-            JOptionPane.showMessageDialog(null, "Vendedor eliminado Correctamento.", "Extio", JOptionPane.INFORMATION_MESSAGE);
+            if(codigoVendedor != null){
+                vendedor.deleteVendedor(Integer.parseInt(codigoVendedor));
+                JOptionPane.showMessageDialog(null, "Vendedor eliminado Correctamento.", "Extio", JOptionPane.INFORMATION_MESSAGE);
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al Eliminar Vendedor.", "Error", JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
@@ -1063,8 +1103,10 @@ public class SistemaVentas extends javax.swing.JFrame {
         panel_edit_add_productos.setVisible(false);
         try {
             String codigoProducto = JOptionPane.showInputDialog(this, "Ingrese el codigo del Producto a eliminar: \n", "Eliminar Cliente", JOptionPane.QUESTION_MESSAGE);
-            producto.deleteProducto(Integer.parseInt(codigoProducto));
-            JOptionPane.showMessageDialog(null, "Producto eliminado Correctamento.", "Extio", JOptionPane.INFORMATION_MESSAGE);
+            if(codigoProducto != null){
+                producto.deleteProducto(Integer.parseInt(codigoProducto));
+                JOptionPane.showMessageDialog(null, "Producto eliminado Correctamento.", "Extio", JOptionPane.INFORMATION_MESSAGE);
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al Eliminar Producto.", "Error", JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
@@ -1076,8 +1118,10 @@ public class SistemaVentas extends javax.swing.JFrame {
         panel_edit_add_factura.setVisible(false);
         try {
             String codigoFactura = JOptionPane.showInputDialog(this, "Ingrese el codigo del Factura a eliminar: \n", "Eliminar Cliente", JOptionPane.QUESTION_MESSAGE);
-            factura.deleteFactura(Integer.parseInt(codigoFactura));
-            JOptionPane.showMessageDialog(null, "Factura eliminado Correctamento.", "Extio", JOptionPane.INFORMATION_MESSAGE);
+            if(codigoFactura != null){
+                factura.deleteFactura(Integer.parseInt(codigoFactura));
+                JOptionPane.showMessageDialog(null, "Factura eliminado Correctamento.", "Extio", JOptionPane.INFORMATION_MESSAGE);
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al Eliminar Factura.", "Error", JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
@@ -1088,11 +1132,13 @@ public class SistemaVentas extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             String codigoProducto = JOptionPane.showInputDialog(this, "Ingrese el codigo del Producto a consultar: \n", "Consultar Cliente", JOptionPane.QUESTION_MESSAGE);
-            Object[] r = producto.selectProducto(Integer.parseInt(codigoProducto));
-            String cod = String.valueOf(r[0]);
-            String nom = (String) r[1];
-            String pre = String.valueOf(r[2]);
-            JOptionPane.showMessageDialog(null, "Producto: \n\nNombre : " + nom + "\nCodigo : " + cod + "\nPrecio : " + pre, "Producto " + cod, JOptionPane.INFORMATION_MESSAGE);
+            if(codigoProducto != null){
+                Object[] r = producto.selectProducto(Integer.parseInt(codigoProducto));
+                String cod = String.valueOf(r[0]);
+                String nom = (String) r[1];
+                String pre = String.valueOf(r[2]);
+                JOptionPane.showMessageDialog(null, "Producto: \n\nNombre : " + nom + "\nCodigo : " + cod + "\nPrecio : " + pre, "Producto " + cod, JOptionPane.INFORMATION_MESSAGE);
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al Consultar Producto.", "Error", JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
@@ -1101,14 +1147,16 @@ public class SistemaVentas extends javax.swing.JFrame {
 
     private void btn_pro_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pro_modificarActionPerformed
         // TODO add your handling code here:
-        panel_edit_add_productos.setVisible(true);
         producto_aceptar.setText("Modificar");
         try {
             String codigoProducto = JOptionPane.showInputDialog(this, "Ingrese el codigo del producto a modificar: \n", "Modificar Producto", JOptionPane.QUESTION_MESSAGE);
-            Object[] r = producto.selectProducto(Integer.parseInt(codigoProducto));
-            text_codigop.setText(String.valueOf(r[0]));
-            text_nombre_producto.setText((String) r[1]);
-            text_precio_producto.setText(String.valueOf(r[2]));
+            if(codigoProducto != null){
+                Object[] r = producto.selectProducto(Integer.parseInt(codigoProducto));
+                text_codigop.setText(String.valueOf(r[0]));
+                text_nombre_producto.setText((String) r[1]);
+                text_precio_producto.setText(String.valueOf(r[2]));
+                panel_edit_add_productos.setVisible(true);
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al Modificar Producto.", "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -1116,19 +1164,25 @@ public class SistemaVentas extends javax.swing.JFrame {
 
     private void btn_fac_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_fac_modificarActionPerformed
         // TODO add your handling code here:
-        panel_edit_add_factura.setVisible(true);
         factura_aceptar.setText("Modificar");
         try {
             String codigoFactura = JOptionPane.showInputDialog(this, "Ingrese el codigo del factura a modificar: \n", "Modificar Producto", JOptionPane.QUESTION_MESSAGE);
-            Object[] r = factura.selectFactura(Integer.parseInt(codigoFactura));
-            text_codigof.setText(String.valueOf(r[0]));
-            combo_tipo_factura.setSelectedIndex((int)r[1]);
-            text_total.setText(String.valueOf(r[3]));
-            combo_cliente_factura.setSelectedIndex((int)r[4]);
+            if(codigoFactura != null){
+                Object[] r = factura.selectFactura(Integer.parseInt(codigoFactura));
+                text_codigof.setText(String.valueOf(r[0]));
+                combo_tipo_factura.setSelectedIndex((int)r[1]);
+                text_total.setText(String.valueOf(r[3]));
+                combo_cliente_factura.setSelectedIndex((int)r[4]);
+                panel_edit_add_factura.setVisible(true);
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error al Modificar factura.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btn_fac_modificarActionPerformed
+
+    private void btn_fac_consultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_fac_consultaActionPerformed
+
+    }//GEN-LAST:event_btn_fac_consultaActionPerformed
 
     public boolean validaPanelCliente() {
         return text_codigoc.getText().isEmpty()
@@ -1152,8 +1206,10 @@ public class SistemaVentas extends javax.swing.JFrame {
     }
 
     private void cargaCombo(javax.swing.JComboBox x, Object[][] o) {
-        for (int i = 0; i < o.length; i++) {
-            x.addItem(("" + o[i][0] + " " + o[i][1]));
+        if(o != null){
+            for (int i = 0; i < o.length; i++) {
+                x.addItem(("" + o[i][0] + " " + o[i][1]));
+            }
         }
     }
 
