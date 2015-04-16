@@ -81,8 +81,13 @@ CREATE OR REPLACE PROCEDURE  SP_003(XCodigo INT)
 IS 
 BEGIN 
       DELETE FROM Clientes WHERE Codigo = XCodigo;
+      IF SQL%ROWCOUNT = 0 THEN
+          RAISE NO_DATA_FOUND;
+      END IF;
       COMMIT;
 EXCEPTION
+   WHEN NO_DATA_FOUND THEN
+    raise_application_error (-20002,'DB: Error al Eliminar Cliente.');
    WHEN OTHERS THEN
       raise_application_error (-20002,'DB: Error al Eliminar Cliente.');
 END;
@@ -149,8 +154,13 @@ CREATE OR REPLACE PROCEDURE  SP_006(XCodigo INT)
 IS 
 BEGIN 
       DELETE FROM Vendedores WHERE Codigo = XCodigo;
+      IF SQL%ROWCOUNT = 0 THEN
+          RAISE NO_DATA_FOUND;
+      END IF;
       COMMIT;
 EXCEPTION
+   WHEN NO_DATA_FOUND THEN
+    raise_application_error (-20002,'DB: Error al Eliminar Vendedor.');
    WHEN OTHERS THEN
       raise_application_error (-20002,'DB: Error al Eliminar Vendedor.');
 END;
@@ -217,8 +227,13 @@ CREATE OR REPLACE PROCEDURE  SP_009(XNumero INT)
 IS 
 BEGIN 
       DELETE FROM Facturas WHERE Numero = XNumero;
+      IF SQL%ROWCOUNT = 0 THEN
+          RAISE NO_DATA_FOUND;
+      END IF;
       COMMIT;
 EXCEPTION
+   WHEN NO_DATA_FOUND THEN
+    raise_application_error (-20002,'DB: Error al Eliminar Facturas.');
    WHEN OTHERS THEN
       raise_application_error (-20002,'DB: Error al Eliminar Facturas.');
 END;
@@ -285,12 +300,18 @@ CREATE OR REPLACE PROCEDURE  SP_012(XProducto INT, XFactura INT)
 IS 
 BEGIN 
       DELETE FROM Detalles WHERE Producto = XProducto AND Factura = XFactura;
+      IF SQL%ROWCOUNT = 0 THEN
+          RAISE NO_DATA_FOUND;
+      END IF;
       COMMIT;
 EXCEPTION
+   WHEN NO_DATA_FOUND THEN
+    raise_application_error (-20002,'DB: Error al Eliminar Detalles.');
    WHEN OTHERS THEN
       raise_application_error (-20002,'DB: Error al Eliminar Detalles.');
 END;
 /
+
 
 -- SELECT
 CREATE OR REPLACE FUNCTION FS_004(XProducto INT, XFactura INT)
@@ -352,8 +373,13 @@ CREATE OR REPLACE PROCEDURE  SP_015(XCodigo INT)
 IS 
 BEGIN 
       DELETE FROM Productos WHERE Codigo = XCodigo;
+      IF SQL%ROWCOUNT = 0 THEN
+          RAISE NO_DATA_FOUND;
+      END IF;
       COMMIT;
 EXCEPTION
+   WHEN NO_DATA_FOUND THEN
+    raise_application_error (-20002,'DB: Error al Eliminar Productos.');
    WHEN OTHERS THEN
       raise_application_error (-20002,'DB: Error al Eliminar Productos.');
 END;

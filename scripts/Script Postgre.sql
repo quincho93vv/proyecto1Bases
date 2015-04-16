@@ -81,7 +81,13 @@ RETURNS void AS $$
     BEGIN
       DELETE FROM clientes
       WHERE codigo = xcodigo;
-	EXCEPTION WHEN OTHERS THEN
+      IF SQL%ROWCOUNT = 0 THEN
+          RAISE NO_DATA_FOUND;
+      END IF;
+	EXCEPTION 
+	WHEN NO_DATA_FOUND THEN
+		RAISE EXCEPTION 'DB: Error al Eliminar Cliente.';
+	WHEN OTHERS THEN
 		RAISE EXCEPTION 'DB: Error al Eliminar Cliente.';
     END;
 $$ LANGUAGE plpgsql;
@@ -144,7 +150,13 @@ RETURNS void AS $$
     BEGIN
       DELETE FROM vendedores
       WHERE codigo = xcodigo;
-	EXCEPTION WHEN OTHERS THEN
+	IF SQL%ROWCOUNT = 0 THEN
+          RAISE NO_DATA_FOUND;
+	END IF;
+	EXCEPTION 
+	WHEN NO_DATA_FOUND THEN
+		RAISE EXCEPTION 'DB: Error al Eliminar Vendedor.';
+	WHEN OTHERS THEN
 		RAISE EXCEPTION 'DB: Error al Eliminar Vendedor.';
     END;
 $$ LANGUAGE plpgsql;
@@ -209,7 +221,13 @@ RETURNS void AS $$
     BEGIN
       DELETE FROM facturas
       WHERE facturas.numero = xnumero;
-	EXCEPTION WHEN OTHERS THEN
+      IF SQL%ROWCOUNT = 0 THEN
+          RAISE NO_DATA_FOUND;
+      END IF;
+	EXCEPTION 
+	WHEN NO_DATA_FOUND THEN
+		RAISE EXCEPTION 'DB: Error al Eliminar Factura.';
+	WHEN OTHERS THEN
 		RAISE EXCEPTION 'DB: Error al Eliminar Factura.';
     END;
 $$ LANGUAGE plpgsql;
@@ -273,7 +291,13 @@ RETURNS void AS $$
     BEGIN
       DELETE FROM detalles
       WHERE producto = xproducto AND factura = xfactura;
-	EXCEPTION WHEN OTHERS THEN
+	IF SQL%ROWCOUNT = 0 THEN
+          RAISE NO_DATA_FOUND;
+      END IF;
+	EXCEPTION 
+	WHEN NO_DATA_FOUND THEN
+		RAISE EXCEPTION 'DB: Error al Eliminar Detalle.';
+	WHEN OTHERS THEN
 		RAISE EXCEPTION 'DB: Error al Eliminar Detalle.';
     END;
 $$ LANGUAGE plpgsql;
@@ -338,8 +362,14 @@ RETURNS void AS $$
     BEGIN
       DELETE FROM productos
       WHERE codigo = xcodigo;
-	EXCEPTION WHEN OTHERS THEN
+      IF SQL%ROWCOUNT = 0 THEN
+          RAISE NO_DATA_FOUND;
+      END IF;
+	EXCEPTION 
+	WHEN NO_DATA_FOUND THEN
 		RAISE EXCEPTION 'DB: Error al Eliminar Producto.';
+	WHEN OTHERS THEN
+		RAISE EXCEPTION 'DB: Error al Eliminar Porducto.';
     END;
 $$ LANGUAGE plpgsql;
 
