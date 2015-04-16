@@ -1,4 +1,4 @@
------------------------------------------------------------
+﻿-----------------------------------------------------------
 -- Base de Datos	: Proyecto 1
 -- Modelo Version	: 1
 -- Fecha			: 10/04/2015
@@ -7,6 +7,15 @@
 --						  *Mario Romero Sandoval
 -- Servidor   : Oracle 11g Express Edition
 -----------------------------------------------------------
+drop table detalles
+drop table productos
+drop table facturas
+drop table clientes
+drop table vendedores
+
+commit
+
+
 
 insert into vendedores values (1,'Fernando',209000);
 insert into vendedores values (2,'Maria',195000);

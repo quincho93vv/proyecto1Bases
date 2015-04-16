@@ -1240,8 +1240,6 @@ public class SistemaVentas extends javax.swing.JFrame {
                 text_usuario.setEditable(false);
                 pass_usuario.setEditable(false);
                 btn_conectar.setText("Desconectar");
-                cargaCombo(combo_cliente_factura, cliente.selectTodoCliente());
-                cargaCombo(combo_vendedor, vendedor.selectTodoVendedor());
             } catch (SQLException e) {
                 JOptionPane.showMessageDialog(null, "Error al Conectar.", "Error", JOptionPane.ERROR_MESSAGE);
                 e.printStackTrace();
@@ -1267,9 +1265,10 @@ public class SistemaVentas extends javax.swing.JFrame {
         if (isConnected()) {
             panel_edit_add_cliente.setVisible(false);
             try {
-                String codigoCliente = JOptionPane.showInputDialog(this, "Ingrese el codigo del cliente a consultar: \n", "Consultar Cliente", JOptionPane.QUESTION_MESSAGE);
-                if (codigoCliente != null) {
-                    Object[] r = cliente.selectCliente(Integer.parseInt(codigoCliente));
+                cargaCombo(combo_codigo, cliente.selectTodoCliente());
+                int codigoCliente = JOptionPane.showConfirmDialog(this, panel_codigo, "Consultar Cliente", JOptionPane.OK_CANCEL_OPTION);
+                if (codigoCliente == JOptionPane.OK_OPTION) {
+                    Object[] r = cliente.selectCliente(combo_codigo.getSelectedIndex() + 1);
                     String cod = String.valueOf(r[0]);
                     String nom = (String) r[1];
                     String ven = String.valueOf(r[2]);
@@ -1286,12 +1285,13 @@ public class SistemaVentas extends javax.swing.JFrame {
         if (isConnected()) {
             cliente_aceptar.setText("Modificar");
             try {
-                String codigoCliente = JOptionPane.showInputDialog(this, "Ingrese el codigo del cliente a modificar: \n", "Modificar Cliente", JOptionPane.QUESTION_MESSAGE);
-                if (codigoCliente != null) {
-                    Object[] r = cliente.selectCliente(Integer.parseInt(codigoCliente));
+                cargaCombo(combo_codigo, cliente.selectTodoCliente());
+                int codigoCliente = JOptionPane.showConfirmDialog(this, panel_codigo, "Modificar Cliente", JOptionPane.OK_CANCEL_OPTION);
+                if (codigoCliente == JOptionPane.OK_OPTION) {
+                    Object[] r = cliente.selectCliente(combo_codigo.getSelectedIndex() + 1);
                     cliente.setCod((int) r[0]);
                     text_nombre_cliente.setText((String) r[1]);
-
+                    cargaCombo(combo_vendedor, vendedor.selectTodoVendedor());
                     combo_vendedor.setSelectedIndex((int) r[2] - 1);
                     panel_edit_add_cliente.setVisible(true);
                 }
@@ -1306,9 +1306,10 @@ public class SistemaVentas extends javax.swing.JFrame {
         if (isConnected()) {
             panel_edit_add_cliente.setVisible(false);
             try {
-                String codigoCliente = JOptionPane.showInputDialog(this, "Ingrese el codigo del cliente a eliminar: \n", "Eliminar Cliente", JOptionPane.QUESTION_MESSAGE);
-                if (codigoCliente != null) {
-                    cliente.deleteCliente(Integer.parseInt(codigoCliente));
+                cargaCombo(combo_codigo, cliente.selectTodoCliente());
+                int codigoCliente = JOptionPane.showConfirmDialog(this, panel_codigo, "Borrar Cliente", JOptionPane.OK_CANCEL_OPTION);
+                if (codigoCliente == JOptionPane.OK_OPTION) {
+                    cliente.deleteCliente(combo_codigo.getSelectedIndex() + 1);
                     JOptionPane.showMessageDialog(null, "Cliente eliminado Correctamento.", "Extio", JOptionPane.INFORMATION_MESSAGE);
                 }
             } catch (Exception e) {
@@ -1350,9 +1351,10 @@ public class SistemaVentas extends javax.swing.JFrame {
         if (isConnected()) {
             panel_edit_add_vendedor.setVisible(false);
             try {
-                String codigoVendedor = JOptionPane.showInputDialog(this, "Ingrese el codigo del vendedor a consultar: \n", "Consultar Cliente", JOptionPane.QUESTION_MESSAGE);
-                if (codigoVendedor != null) {
-                    Object[] r = vendedor.selectVendedor(Integer.parseInt(codigoVendedor));
+                cargaCombo(combo_codigo, vendedor.selectTodoVendedor());
+                int codigoVendedor = JOptionPane.showConfirmDialog(this, panel_codigo, "Consultar Vendedor", JOptionPane.OK_CANCEL_OPTION);
+                if (codigoVendedor == JOptionPane.OK_OPTION) {
+                    Object[] r = vendedor.selectVendedor(combo_codigo.getSelectedIndex() + 1);
                     String cod = String.valueOf(r[0]);
                     String nom = (String) r[1];
                     String ven = String.valueOf(r[2]);
@@ -1369,9 +1371,10 @@ public class SistemaVentas extends javax.swing.JFrame {
         if (isConnected()) {
             vendedor_aceptar.setText("Modificar");
             try {
-                String codigoVendedor = JOptionPane.showInputDialog(this, "Ingrese el codigo del vendedor a modificar: \n", "Modificar Cliente", JOptionPane.QUESTION_MESSAGE);
-                if (codigoVendedor != null) {
-                    Object[] r = vendedor.selectVendedor(Integer.parseInt(codigoVendedor));
+                cargaCombo(combo_codigo, vendedor.selectTodoVendedor());
+                int codigoVendedor = JOptionPane.showConfirmDialog(this, panel_codigo, "Modificar Vendedor", JOptionPane.OK_CANCEL_OPTION);
+                if (codigoVendedor == JOptionPane.OK_OPTION) {
+                    Object[] r = vendedor.selectVendedor(combo_codigo.getSelectedIndex() + 1);
                     vendedor.setCod((int) r[0]);
                     text_nombre_vendedor.setText((String) r[1]);
                     text_total_vendido.setText(String.valueOf(r[2]));
@@ -1387,9 +1390,10 @@ public class SistemaVentas extends javax.swing.JFrame {
         if (isConnected()) {
             panel_edit_add_vendedor.setVisible(false);
             try {
-                String codigoVendedor = JOptionPane.showInputDialog(this, "Ingrese el codigo del Vendedor a eliminar: \n", "Eliminar Cliente", JOptionPane.QUESTION_MESSAGE);
-                if (codigoVendedor != null) {
-                    vendedor.deleteVendedor(Integer.parseInt(codigoVendedor));
+                cargaCombo(combo_codigo, vendedor.selectTodoVendedor());
+                int codigoVendedor = JOptionPane.showConfirmDialog(this, panel_codigo, "Eliminar Vendedor", JOptionPane.OK_CANCEL_OPTION);
+                if (codigoVendedor == JOptionPane.OK_OPTION) {
+                    vendedor.deleteVendedor(combo_codigo.getSelectedIndex() + 1);
                     JOptionPane.showMessageDialog(null, "Vendedor eliminado Correctamento.", "Extio", JOptionPane.INFORMATION_MESSAGE);
                 }
             } catch (Exception e) {
@@ -1403,9 +1407,10 @@ public class SistemaVentas extends javax.swing.JFrame {
         if (isConnected()) {
             panel_edit_add_productos.setVisible(false);
             try {
-                String codigoProducto = JOptionPane.showInputDialog(this, "Ingrese el codigo del Producto a eliminar: \n", "Eliminar Cliente", JOptionPane.QUESTION_MESSAGE);
-                if (codigoProducto != null) {
-                    producto.deleteProducto(Integer.parseInt(codigoProducto));
+                cargaCombo(combo_codigo, producto.selectTodoProducto());
+                int codigoProducto = JOptionPane.showConfirmDialog(this, panel_codigo, "Consultar Producto", JOptionPane.OK_CANCEL_OPTION);
+                if (codigoProducto == JOptionPane.OK_OPTION) {
+                    producto.deleteProducto(combo_codigo.getSelectedIndex() + 1);
                     JOptionPane.showMessageDialog(null, "Producto eliminado Correctamento.", "Extio", JOptionPane.INFORMATION_MESSAGE);
                 }
             } catch (Exception e) {
@@ -1419,9 +1424,10 @@ public class SistemaVentas extends javax.swing.JFrame {
         if (isConnected()) {
             panel_edit_add_factura.setVisible(false);
             try {
-                String codigoFactura = JOptionPane.showInputDialog(this, "Ingrese el codigo del Factura a eliminar: \n", "Eliminar Cliente", JOptionPane.QUESTION_MESSAGE);
-                if (codigoFactura != null) {
-                    factura.deleteFactura(Integer.parseInt(codigoFactura));
+                cargaComboFac(combo_codigo, factura.selectTodoFactura());
+                int codigoFactura = JOptionPane.showConfirmDialog(this, panel_codigo, "Eliminar Factura", JOptionPane.OK_CANCEL_OPTION);
+                if (codigoFactura == JOptionPane.OK_OPTION) {
+                    factura.deleteFactura(combo_codigo.getSelectedIndex()+1);
                     JOptionPane.showMessageDialog(null, "Factura eliminado Correctamento.", "Extio", JOptionPane.INFORMATION_MESSAGE);
                 }
             } catch (Exception e) {
@@ -1434,9 +1440,10 @@ public class SistemaVentas extends javax.swing.JFrame {
     private void btn_pro_consultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pro_consultaActionPerformed
         if (isConnected()) {
             try {
-                String codigoProducto = JOptionPane.showInputDialog(this, "Ingrese el codigo del Producto a consultar: \n", "Consultar Cliente", JOptionPane.QUESTION_MESSAGE);
-                if (codigoProducto != null) {
-                    Object[] r = producto.selectProducto(Integer.parseInt(codigoProducto));
+                cargaCombo(combo_codigo, producto.selectTodoProducto());
+                int codigoProducto = JOptionPane.showConfirmDialog(this, panel_codigo, "Consultar Producto", JOptionPane.OK_CANCEL_OPTION);
+                if (codigoProducto == JOptionPane.OK_OPTION) {
+                    Object[] r = producto.selectProducto(combo_codigo.getSelectedIndex() + 1);
                     String cod = String.valueOf(r[0]);
                     String nom = (String) r[1];
                     String pre = String.valueOf(r[2]);
@@ -1453,9 +1460,10 @@ public class SistemaVentas extends javax.swing.JFrame {
         if (isConnected()) {
             producto_aceptar.setText("Modificar");
             try {
-                String codigoProducto = JOptionPane.showInputDialog(this, "Ingrese el codigo del producto a modificar: \n", "Modificar Producto", JOptionPane.QUESTION_MESSAGE);
-                if (codigoProducto != null) {
-                    Object[] r = producto.selectProducto(Integer.parseInt(codigoProducto));
+                cargaCombo(combo_codigo, producto.selectTodoProducto());
+                int codigoProducto = JOptionPane.showConfirmDialog(this, panel_codigo, "Modificar Producto", JOptionPane.OK_CANCEL_OPTION);
+                if (codigoProducto == JOptionPane.OK_OPTION) {
+                    Object[] r = producto.selectProducto(combo_codigo.getSelectedIndex() + 1);
                     producto.setCod((int) r[0]);
                     text_nombre_producto.setText((String) r[1]);
                     text_precio_producto.setText(String.valueOf(r[2]));
@@ -1471,12 +1479,14 @@ public class SistemaVentas extends javax.swing.JFrame {
         if (isConnected()) {
             factura_aceptar.setText("Modificar");
             try {
-                String codigoFactura = JOptionPane.showInputDialog(this, "Ingrese el codigo del factura a modificar: \n", "Modificar Producto", JOptionPane.QUESTION_MESSAGE);
-                if (codigoFactura != null) {
-                    Object[] r = factura.selectFactura(Integer.parseInt(codigoFactura));
+                cargaComboFac(combo_codigo, factura.selectTodoFactura());
+                int codigoFactura = JOptionPane.showConfirmDialog(this, panel_codigo, "Modificar Factura", JOptionPane.OK_CANCEL_OPTION);
+                if (codigoFactura == JOptionPane.OK_OPTION) {
+                    Object[] r = factura.selectFactura(combo_codigo.getSelectedIndex() + 1);
                     factura.setCod((int) r[0]);
                     combo_tipo_factura.setSelectedIndex(Integer.parseInt((String) r[1]));
                     text_total.setText(String.valueOf(r[3]));
+                    cargaCombo(combo_cliente_factura, cliente.selectTodoCliente());
                     combo_cliente_factura.setSelectedIndex((int) r[4] - 1);
                     panel_edit_add_factura.setVisible(true);
                 }
@@ -1490,9 +1500,10 @@ public class SistemaVentas extends javax.swing.JFrame {
     private void btn_fac_consultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_fac_consultaActionPerformed
         if (isConnected()) {
             try {
-                String codigoFactura = JOptionPane.showInputDialog(this, "Ingrese el codigo de la Factura a consultar: \n", "Consultar Cliente", JOptionPane.QUESTION_MESSAGE);
-                if (codigoFactura != null) {
-                    Object[] r = factura.selectFactura(Integer.parseInt(codigoFactura));
+                cargaComboFac(combo_codigo, factura.selectTodoFactura());
+                int codigoFactura = JOptionPane.showConfirmDialog(this, panel_codigo, "Consultar Factura", JOptionPane.OK_CANCEL_OPTION);
+                if (codigoFactura == JOptionPane.OK_OPTION) {
+                    Object[] r = factura.selectFactura(combo_codigo.getSelectedIndex() + 1);
                     String codigo = String.valueOf(r[0]);
                     String tipo = r[1].equals("0") ? "Contado" : "Credito";
                     String fecha = (String) r[2].toString();
@@ -1565,7 +1576,7 @@ public class SistemaVentas extends javax.swing.JFrame {
             panel_edit_add_detalle.setVisible(true);
             factura_aceptar.setText("Agregar");
             try {
-                cargaCombo(combo_facturas_detalle, factura.selectTodoFactura());
+                cargaComboFac(combo_facturas_detalle, factura.selectTodoFactura());
                 cargaCombo(combo_productos_detalle, producto.selectTodoProducto());
             } catch (SQLException ex) {
                 Logger.getLogger(SistemaVentas.class.getName()).log(Level.SEVERE, null, ex);
@@ -1604,9 +1615,11 @@ public class SistemaVentas extends javax.swing.JFrame {
                 int codigoDetalle = JOptionPane.showConfirmDialog(this, panel_cons_det, "Modificar Detalle", JOptionPane.OK_CANCEL_OPTION);
                 if (codigoDetalle == JOptionPane.OK_OPTION) {
                     Object[] r = detalle.selectDetalle(combo_cons_prod.getSelectedIndex() + 1, combo_cons_fact.getSelectedIndex() + 1);
-                    combo_productos_detalle.setSelectedIndex((int) r[0]);
-                    combo_facturas_detalle.setSelectedIndex((int) r[1]);
-                    combo_cantidad.setSelectedIndex((int) r[2]);
+                    cargaComboFac(combo_facturas_detalle, factura.selectTodoFactura());
+                    cargaCombo(combo_productos_detalle, producto.selectTodoProducto());
+                    combo_productos_detalle.setSelectedIndex((int) r[0] - 1);
+                    combo_facturas_detalle.setSelectedIndex((int) r[1] - 1);
+                    combo_cantidad.setSelectedIndex((int) r[2] - 1);
                     text_total_detalle.setText(String.valueOf((float) r[3]));
                     panel_edit_add_detalle.setVisible(true);
                 }
@@ -1625,8 +1638,8 @@ public class SistemaVentas extends javax.swing.JFrame {
                 cargaCombo(combo_cons_fact, factura.selectTodoFactura());
                 int codigoDetalle = JOptionPane.showConfirmDialog(this, panel_cons_det, "Eliminar Detalle", JOptionPane.OK_CANCEL_OPTION);
                 if (codigoDetalle == JOptionPane.OK_OPTION) {
-                    detalle.deleteDetalle(Integer.parseInt((String) combo_cons_prod.getSelectedItem()), Integer.parseInt((String) combo_cons_fact.getSelectedItem()));
-                    JOptionPane.showMessageDialog(null, "Factura eliminado Correctamento.", "Extio", JOptionPane.INFORMATION_MESSAGE);
+                    detalle.deleteDetalle(combo_cons_prod.getSelectedIndex() + 1, combo_cons_fact.getSelectedIndex() + 1);
+                    JOptionPane.showMessageDialog(null, "Detalle eliminado Correctamento.", "Extio", JOptionPane.INFORMATION_MESSAGE);
                 }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Error al Eliminar Detalle.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -1655,7 +1668,7 @@ public class SistemaVentas extends javax.swing.JFrame {
                 msj = "modificado";
             }
             validaPanelProducto();
-            detalle.insertOrUpdateDetalle(cond, combo_productos_detalle.getSelectedIndex()+1, combo_facturas_detalle.getSelectedIndex()+1, combo_cantidad.getSelectedIndex()+1, Float.parseFloat(text_total_detalle.getText()));
+            detalle.insertOrUpdateDetalle(cond, combo_productos_detalle.getSelectedIndex() + 1, combo_facturas_detalle.getSelectedIndex() + 1, combo_cantidad.getSelectedIndex() + 1, Float.parseFloat(text_total_detalle.getText()));
             JOptionPane.showMessageDialog(null, "Detalle " + msj + " Exitosamente.", "Extio", JOptionPane.INFORMATION_MESSAGE);
 
         } catch (SQLException | NumberFormatException ex) {
@@ -1675,7 +1688,7 @@ public class SistemaVentas extends javax.swing.JFrame {
 
     private void combo_cantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_cantidadActionPerformed
         // TODO add your handling code here:
-        
+
         //text_total_detalle.setText((combo_cantidad.getSelectedIndex()+1)*);
     }//GEN-LAST:event_combo_cantidadActionPerformed
 
@@ -1698,7 +1711,7 @@ public class SistemaVentas extends javax.swing.JFrame {
 
     private void cargaCombo(javax.swing.JComboBox x, Object[][] o) {
         Object[] mod = new Object[o.length];
-        if (x != combo_facturas_detalle) {
+        if (x != combo_facturas_detalle && x != combo_cons_fact) {
             for (int i = 0; i < o.length; i++) {
                 mod[i] = ("" + o[i][0] + " " + o[i][1]);
             }
@@ -1709,6 +1722,15 @@ public class SistemaVentas extends javax.swing.JFrame {
             }
             x.setModel(new DefaultComboBoxModel(mod));
         }
+    }
+    
+    private void cargaComboFac(javax.swing.JComboBox x, Object[][] o) {
+        Object[] mod = new Object[o.length];
+            for (int i = 0; i < o.length; i++) {
+                mod[i] = ("" + o[i][0]);
+            }
+            x.setModel(new DefaultComboBoxModel(mod));
+        
     }
 
     private void cargaTabla(String[] cn, Object[][] o) {
