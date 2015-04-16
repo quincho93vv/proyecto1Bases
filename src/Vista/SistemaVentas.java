@@ -320,22 +320,27 @@ public class SistemaVentas extends javax.swing.JFrame {
             panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_inicioLayout.createSequentialGroup()
                 .addContainerGap(267, Short.MAX_VALUE)
-                .addGroup(panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panel_conectar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_conectar)
-                    .addComponent(jLabel1))
+                .addComponent(panel_conectar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(268, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_inicioLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_inicioLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_conectar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panel_inicioLayout.setVerticalGroup(
             panel_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_inicioLayout.createSequentialGroup()
                 .addGap(85, 85, 85)
                 .addComponent(jLabel1)
-                .addGap(69, 69, 69)
+                .addGap(64, 64, 64)
                 .addComponent(panel_conectar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
+                .addGap(68, 68, 68)
                 .addComponent(btn_conectar)
-                .addContainerGap(123, Short.MAX_VALUE))
+                .addContainerGap(97, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Inicio", panel_inicio);
@@ -450,7 +455,7 @@ public class SistemaVentas extends javax.swing.JFrame {
                     .addComponent(btn_cli_modificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_cli_borrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(todo_cliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(39, 39, 39)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addComponent(panel_edit_add_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(190, Short.MAX_VALUE))
         );
@@ -509,21 +514,19 @@ public class SistemaVentas extends javax.swing.JFrame {
             .addGroup(panel_edit_add_vendedorLayout.createSequentialGroup()
                 .addGap(33, 33, 33)
                 .addGroup(panel_edit_add_vendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panel_edit_add_vendedorLayout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                        .addComponent(text_nombre_vendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panel_edit_add_vendedorLayout.createSequentialGroup()
-                        .addComponent(jLabel17)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(text_total_vendido)))
+                    .addComponent(jLabel17)
+                    .addComponent(jLabel8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panel_edit_add_vendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(text_nombre_vendedor)
+                    .addComponent(text_total_vendido))
                 .addContainerGap())
             .addGroup(panel_edit_add_vendedorLayout.createSequentialGroup()
                 .addGap(59, 59, 59)
                 .addComponent(vendedor_aceptar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(vendedor_cancelar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         panel_edit_add_vendedorLayout.setVerticalGroup(
             panel_edit_add_vendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -583,16 +586,16 @@ public class SistemaVentas extends javax.swing.JFrame {
         panel_VendedoresLayout.setHorizontalGroup(
             panel_VendedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_VendedoresLayout.createSequentialGroup()
-                .addGap(44, 44, 44)
+                .addGap(43, 43, 43)
                 .addGroup(panel_VendedoresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(todo_vendedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_ven_modificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_ven_agregar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_ven_borrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_ven_consulta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(39, 39, 39)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addComponent(panel_edit_add_vendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(254, Short.MAX_VALUE))
+                .addContainerGap(255, Short.MAX_VALUE))
         );
 
         panel_VendedoresLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btn_ven_agregar, btn_ven_borrar, btn_ven_consulta, btn_ven_modificar});
@@ -730,7 +733,7 @@ public class SistemaVentas extends javax.swing.JFrame {
                     .addComponent(btn_pro_consulta, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
                     .addComponent(btn_pro_agregar, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
                     .addComponent(btn_pro_modificar, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE))
-                .addGap(39, 39, 39)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addComponent(panel_edit_add_productos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(195, Short.MAX_VALUE))
         );
@@ -876,16 +879,16 @@ public class SistemaVentas extends javax.swing.JFrame {
         panel_FacturasLayout.setHorizontalGroup(
             panel_FacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_FacturasLayout.createSequentialGroup()
-                .addGap(44, 44, 44)
+                .addGap(43, 43, 43)
                 .addGroup(panel_FacturasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(todo_factura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_fac_modificar, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
                     .addComponent(btn_fac_borrar, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
                     .addComponent(btn_fac_consulta, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
                     .addComponent(btn_fac_agregar, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE))
-                .addGap(39, 39, 39)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addComponent(panel_edit_add_factura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(78, Short.MAX_VALUE))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
 
         panel_FacturasLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btn_fac_agregar, btn_fac_borrar, btn_fac_consulta, btn_fac_modificar});
@@ -994,7 +997,7 @@ public class SistemaVentas extends javax.swing.JFrame {
         panel_edit_add_detalleLayout.setHorizontalGroup(
             panel_edit_add_detalleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_edit_add_detalleLayout.createSequentialGroup()
-                .addGap(41, 41, 41)
+                .addContainerGap(41, Short.MAX_VALUE)
                 .addGroup(panel_edit_add_detalleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel16)
                     .addComponent(jLabel18)
@@ -1044,16 +1047,16 @@ public class SistemaVentas extends javax.swing.JFrame {
         panel_DetallesLayout.setHorizontalGroup(
             panel_DetallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_DetallesLayout.createSequentialGroup()
-                .addGap(45, 45, 45)
+                .addGap(43, 43, 43)
                 .addGroup(panel_DetallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(todo_detalles, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_det_modificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_det_borrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_det_consulta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_det_agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(44, 44, 44)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addComponent(panel_edit_add_detalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
         panel_DetallesLayout.setVerticalGroup(
             panel_DetallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1122,7 +1125,6 @@ public class SistemaVentas extends javax.swing.JFrame {
     }//GEN-LAST:event_cliente_aceptarActionPerformed
 
     private void vendedor_aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vendedor_aceptarActionPerformed
-
         try {
             boolean cond = true;
             int codigo = vendedor.size() + 1;
@@ -1653,11 +1655,12 @@ public class SistemaVentas extends javax.swing.JFrame {
                 msj = "modificado";
             }
             validaPanelProducto();
-            detalle.insertOrUpdateDetalle(cond, combo_productos_detalle.getSelectedIndex(), combo_facturas_detalle.getSelectedIndex(), combo_cantidad.getSelectedIndex(), Float.parseFloat(text_total_detalle.getText()));
+            detalle.insertOrUpdateDetalle(cond, combo_productos_detalle.getSelectedIndex()+1, combo_facturas_detalle.getSelectedIndex()+1, combo_cantidad.getSelectedIndex()+1, Float.parseFloat(text_total_detalle.getText()));
             JOptionPane.showMessageDialog(null, "Detalle " + msj + " Exitosamente.", "Extio", JOptionPane.INFORMATION_MESSAGE);
 
         } catch (SQLException | NumberFormatException ex) {
             JOptionPane.showMessageDialog(null, "Error al " + msj + " Detalle.", "Error", JOptionPane.ERROR_MESSAGE);
+            ex.printStackTrace();
         }
         detalle_cancelar.doClick();
     }//GEN-LAST:event_detalle_aceptarActionPerformed

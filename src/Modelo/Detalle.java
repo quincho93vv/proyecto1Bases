@@ -51,8 +51,7 @@ public class Detalle {
         }
         cs.setInt(2, producto);
         cs.setInt(3, factura);
-        cs.executeUpdate();
-        cs.close();
+        cs.execute();
         ResultSet rs = (ResultSet) cs.getObject(1);
         while (rs.next()) {
             result[0] = rs.getInt("Producto");
