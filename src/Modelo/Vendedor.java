@@ -73,7 +73,7 @@ public class Vendedor {
 
     public Object[][] selectTodoVendedor() throws SQLException {
 
-        cs = connection.prepareCall("{? = call FS_007}");
+        cs = connection.prepareCall("{? = call FS_007()}");
         if (connection.getMetaData().getURL().equals("jdbc:oracle:thin:@localhost:1521:xe")) {
             cs.registerOutParameter(1, OracleTypes.CURSOR);
         } else {

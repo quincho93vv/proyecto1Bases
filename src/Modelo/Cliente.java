@@ -61,7 +61,7 @@ public class Cliente {
     }
 
     public Object[][] selectTodoCliente() throws SQLException {
-        cs = connection.prepareCall("{? = call FS_006}");
+        cs = connection.prepareCall("{? = call FS_006()}");
         if (connection.getMetaData().getURL().equals("jdbc:oracle:thin:@localhost:1521:xe")) {
             cs.registerOutParameter(1, OracleTypes.CURSOR);
         } else {

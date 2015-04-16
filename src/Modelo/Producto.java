@@ -63,7 +63,7 @@ public class Producto {
     
     public Object[][] selectTodoProducto() throws SQLException {
 
-        cs = connection.prepareCall("{? = call FS_010}");
+        cs = connection.prepareCall("{? = call FS_010()}");
         if (connection.getMetaData().getURL().equals("jdbc:oracle:thin:@localhost:1521:xe")) {
             cs.registerOutParameter(1, OracleTypes.CURSOR);
         } else {

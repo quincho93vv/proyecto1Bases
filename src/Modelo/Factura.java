@@ -68,7 +68,7 @@ public class Factura {
     
     public Object[][] selectTodoFactura() throws SQLException {
 
-        cs = connection.prepareCall("{? = call FS_008}");
+        cs = connection.prepareCall("{? = call FS_008()}");
         if (connection.getMetaData().getURL().equals("jdbc:oracle:thin:@localhost:1521:xe")) {
             cs.registerOutParameter(1, OracleTypes.CURSOR);
         } else {

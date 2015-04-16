@@ -17,12 +17,14 @@ public class SistemaVentas extends javax.swing.JFrame {
     String[] headVendedores = {"Codigo", "Nombre", "Total vendido"};
     String[] headFacturas = {"Codigo", "Cliente", "Tipo", "Fecha", "Total"};
     String[] headProductos = {"Codigo", "Nombre", "Precio"};
+    String[] headDetalles = {"Producto", "Factura", "Cantidad", "Total"};
     String msj = "agregado";
     ConnectionHandler ch;
     Cliente cliente;
     Vendedor vendedor;
     Factura factura;
     Producto producto;
+    Detalle detalle;
 
     public SistemaVentas() {
         initComponents();
@@ -40,6 +42,13 @@ public class SistemaVentas extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
+        panel_codigo = new javax.swing.JPanel();
+        combo_codigo = new javax.swing.JComboBox();
+        panel_cons_det = new javax.swing.JPanel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        combo_cons_fact = new javax.swing.JComboBox();
+        combo_cons_prod = new javax.swing.JComboBox();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         panel_inicio = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -105,6 +114,24 @@ public class SistemaVentas extends javax.swing.JFrame {
         btn_fac_borrar = new javax.swing.JButton();
         btn_fac_consulta = new javax.swing.JButton();
         todo_factura = new javax.swing.JButton();
+        panel_Detalles = new javax.swing.JPanel();
+        btn_det_agregar = new javax.swing.JButton();
+        btn_det_consulta = new javax.swing.JButton();
+        btn_det_modificar = new javax.swing.JButton();
+        btn_det_borrar = new javax.swing.JButton();
+        todo_detalles = new javax.swing.JButton();
+        panel_edit_add_detalle = new javax.swing.JPanel();
+        combo_facturas_detalle = new javax.swing.JComboBox();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        combo_productos_detalle = new javax.swing.JComboBox();
+        jLabel20 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        text_total_detalle = new javax.swing.JTextPane();
+        detalle_aceptar = new javax.swing.JButton();
+        detalle_cancelar = new javax.swing.JButton();
+        combo_cantidad = new javax.swing.JComboBox();
 
         cs.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Oracle", "Postgres" }));
         cs.setSelectedIndex(-1);
@@ -161,6 +188,60 @@ public class SistemaVentas extends javax.swing.JFrame {
                     .addComponent(pu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13))
                 .addContainerGap())
+        );
+
+        javax.swing.GroupLayout panel_codigoLayout = new javax.swing.GroupLayout(panel_codigo);
+        panel_codigo.setLayout(panel_codigoLayout);
+        panel_codigoLayout.setHorizontalGroup(
+            panel_codigoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_codigoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(combo_codigo, 0, 220, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        panel_codigoLayout.setVerticalGroup(
+            panel_codigoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_codigoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(combo_codigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jLabel21.setText("Producto");
+
+        jLabel22.setText("Factura");
+
+        combo_cons_fact.setSelectedIndex(-1);
+
+        combo_cons_prod.setSelectedIndex(-1);
+
+        javax.swing.GroupLayout panel_cons_detLayout = new javax.swing.GroupLayout(panel_cons_det);
+        panel_cons_det.setLayout(panel_cons_detLayout);
+        panel_cons_detLayout.setHorizontalGroup(
+            panel_cons_detLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_cons_detLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panel_cons_detLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel21)
+                    .addComponent(jLabel22))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panel_cons_detLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(combo_cons_fact, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(combo_cons_prod, 0, 183, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        panel_cons_detLayout.setVerticalGroup(
+            panel_cons_detLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_cons_detLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addGroup(panel_cons_detLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(combo_cons_fact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel22))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panel_cons_detLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel21)
+                    .addComponent(combo_cons_prod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -342,7 +423,7 @@ public class SistemaVentas extends javax.swing.JFrame {
             }
         });
 
-        btn_cli_consulta.setText("Consultar Clientes");
+        btn_cli_consulta.setText("Consultar Cliente");
         btn_cli_consulta.setPreferredSize(new java.awt.Dimension(139, 23));
         btn_cli_consulta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -483,7 +564,7 @@ public class SistemaVentas extends javax.swing.JFrame {
             }
         });
 
-        btn_ven_consulta.setText("Consultar Vendedores");
+        btn_ven_consulta.setText("Consultar Vendedor");
         btn_ven_consulta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_ven_consultaActionPerformed(evt);
@@ -511,7 +592,7 @@ public class SistemaVentas extends javax.swing.JFrame {
                     .addComponent(btn_ven_consulta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(39, 39, 39)
                 .addComponent(panel_edit_add_vendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(252, Short.MAX_VALUE))
+                .addContainerGap(254, Short.MAX_VALUE))
         );
 
         panel_VendedoresLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btn_ven_agregar, btn_ven_borrar, btn_ven_consulta, btn_ven_modificar});
@@ -622,7 +703,7 @@ public class SistemaVentas extends javax.swing.JFrame {
             }
         });
 
-        btn_pro_consulta.setText("Consultar Productos");
+        btn_pro_consulta.setText("Consultar Producto");
         btn_pro_consulta.setPreferredSize(new java.awt.Dimension(139, 23));
         btn_pro_consulta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -754,28 +835,28 @@ public class SistemaVentas extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        btn_fac_agregar.setText("Agregar Facturas");
+        btn_fac_agregar.setText("Agregar Factura");
         btn_fac_agregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_fac_agregarActionPerformed(evt);
             }
         });
 
-        btn_fac_modificar.setText("Modificar Facturas");
+        btn_fac_modificar.setText("Modificar Factura");
         btn_fac_modificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_fac_modificarActionPerformed(evt);
             }
         });
 
-        btn_fac_borrar.setText("Eliminar Facturas");
+        btn_fac_borrar.setText("Eliminar Factura");
         btn_fac_borrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_fac_borrarActionPerformed(evt);
             }
         });
 
-        btn_fac_consulta.setText("Consultar Facturas");
+        btn_fac_consulta.setText("Consultar Factura");
         btn_fac_consulta.setPreferredSize(new java.awt.Dimension(139, 23));
         btn_fac_consulta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -834,6 +915,169 @@ public class SistemaVentas extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Facturas", panel_Facturas);
 
+        btn_det_agregar.setText("Agregar Detalle");
+        btn_det_agregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_det_agregarActionPerformed(evt);
+            }
+        });
+
+        btn_det_consulta.setText("Consultar Detalle");
+        btn_det_consulta.setPreferredSize(new java.awt.Dimension(139, 23));
+        btn_det_consulta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_det_consultaActionPerformed(evt);
+            }
+        });
+
+        btn_det_modificar.setText("Modificar Detalle");
+        btn_det_modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_det_modificarActionPerformed(evt);
+            }
+        });
+
+        btn_det_borrar.setText("Eliminar Detalle");
+        btn_det_borrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_det_borrarActionPerformed(evt);
+            }
+        });
+
+        todo_detalles.setText("Todos los Detalles");
+        todo_detalles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                todo_detallesActionPerformed(evt);
+            }
+        });
+
+        panel_edit_add_detalle.setVisible(false);
+
+        combo_facturas_detalle.setSelectedIndex(-1);
+
+        jLabel16.setText("Factura");
+
+        jLabel18.setText("Producto");
+
+        jLabel19.setText("Cantidad");
+
+        combo_productos_detalle.setSelectedIndex(-1
+        );
+
+        jLabel20.setText("Total");
+
+        jScrollPane1.setViewportView(text_total_detalle);
+
+        detalle_aceptar.setText("Agregar");
+        detalle_aceptar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                detalle_aceptarActionPerformed(evt);
+            }
+        });
+
+        detalle_cancelar.setText("Cancelar");
+        detalle_cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                detalle_cancelarActionPerformed(evt);
+            }
+        });
+
+        combo_cantidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"  }));
+        combo_cantidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combo_cantidadActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panel_edit_add_detalleLayout = new javax.swing.GroupLayout(panel_edit_add_detalle);
+        panel_edit_add_detalle.setLayout(panel_edit_add_detalleLayout);
+        panel_edit_add_detalleLayout.setHorizontalGroup(
+            panel_edit_add_detalleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_edit_add_detalleLayout.createSequentialGroup()
+                .addGap(41, 41, 41)
+                .addGroup(panel_edit_add_detalleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel16)
+                    .addComponent(jLabel18)
+                    .addComponent(jLabel20)
+                    .addComponent(jLabel19))
+                .addGap(52, 52, 52)
+                .addGroup(panel_edit_add_detalleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel_edit_add_detalleLayout.createSequentialGroup()
+                        .addComponent(detalle_aceptar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(detalle_cancelar))
+                    .addGroup(panel_edit_add_detalleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(combo_facturas_detalle, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(combo_productos_detalle, 0, 228, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(combo_cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(107, Short.MAX_VALUE))
+        );
+        panel_edit_add_detalleLayout.setVerticalGroup(
+            panel_edit_add_detalleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_edit_add_detalleLayout.createSequentialGroup()
+                .addContainerGap(47, Short.MAX_VALUE)
+                .addGroup(panel_edit_add_detalleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(combo_facturas_detalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel16))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panel_edit_add_detalleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18)
+                    .addComponent(combo_productos_detalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panel_edit_add_detalleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel19)
+                    .addComponent(combo_cantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panel_edit_add_detalleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel20)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panel_edit_add_detalleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(detalle_aceptar)
+                    .addComponent(detalle_cancelar))
+                .addContainerGap(34, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout panel_DetallesLayout = new javax.swing.GroupLayout(panel_Detalles);
+        panel_Detalles.setLayout(panel_DetallesLayout);
+        panel_DetallesLayout.setHorizontalGroup(
+            panel_DetallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_DetallesLayout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addGroup(panel_DetallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(todo_detalles, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_det_modificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_det_borrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_det_consulta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_det_agregar, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(44, 44, 44)
+                .addComponent(panel_edit_add_detalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(41, Short.MAX_VALUE))
+        );
+        panel_DetallesLayout.setVerticalGroup(
+            panel_DetallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panel_DetallesLayout.createSequentialGroup()
+                .addGroup(panel_DetallesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(panel_DetallesLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(panel_edit_add_detalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panel_DetallesLayout.createSequentialGroup()
+                        .addGap(68, 68, 68)
+                        .addComponent(btn_det_agregar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_det_consulta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_det_modificar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_det_borrar)
+                        .addGap(18, 18, 18)
+                        .addComponent(todo_detalles)))
+                .addContainerGap(214, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Detalles", panel_Detalles);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -869,7 +1113,7 @@ public class SistemaVentas extends javax.swing.JFrame {
             validaPanelCliente();
             cliente.insertOrUpdateCliente(cond, codigo, text_nombre_cliente.getText(), combo_vendedor.getSelectedIndex() + 1);
             JOptionPane.showMessageDialog(null, "Cliente " + msj + " Exitosamente.", "Extio", JOptionPane.INFORMATION_MESSAGE);
-            
+
         } catch (SQLException | NumberFormatException ex) {
             JOptionPane.showMessageDialog(null, "Error al " + msj + " Cliente.", "Error", JOptionPane.ERROR_MESSAGE);
             ex.printStackTrace();
@@ -890,9 +1134,9 @@ public class SistemaVentas extends javax.swing.JFrame {
             }
             validaPanelVendedor();
             vendedor.insertOrUpdateVendedor(cond, codigo, text_nombre_vendedor.getText(), Float.parseFloat(text_total_vendido.getText()));
-            JOptionPane.showMessageDialog(null, "Vendedor "+msj+" Exitosamente.", "Extio", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Vendedor " + msj + " Exitosamente.", "Extio", JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException | NumberFormatException ex) {
-            JOptionPane.showMessageDialog(null, "Error al "+msj+" Vendedor.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Error al " + msj + " Vendedor.", "Error", JOptionPane.ERROR_MESSAGE);
         }
         vendedor_cancelar.doClick();
     }//GEN-LAST:event_vendedor_aceptarActionPerformed
@@ -910,17 +1154,17 @@ public class SistemaVentas extends javax.swing.JFrame {
         try {
             boolean cond = true;
             int codigo = producto.size() + 1;
-            msj="agregado";
+            msj = "agregado";
             if (producto_aceptar.getText().equals("Modificar")) {
                 cond = false;
                 codigo = producto.getCod();
-                msj="modificado";
+                msj = "modificado";
             }
             validaPanelProducto();
             producto.insertOrUpdateProducto(cond, codigo, text_nombre_producto.getText(), Float.parseFloat(text_precio_producto.getText()));
-            JOptionPane.showMessageDialog(null, "Producto "+msj+" Exitosamente.", "Extio", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Producto " + msj + " Exitosamente.", "Extio", JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException | NumberFormatException ex) {
-            JOptionPane.showMessageDialog(null, "Error al "+msj+" Producto.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Error al " + msj + " Producto.", "Error", JOptionPane.ERROR_MESSAGE);
         }
         producto_cancelar.doClick();
     }//GEN-LAST:event_producto_aceptarActionPerformed
@@ -932,7 +1176,7 @@ public class SistemaVentas extends javax.swing.JFrame {
     }//GEN-LAST:event_producto_cancelarActionPerformed
 
     private void factura_aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_factura_aceptarActionPerformed
-        
+
         try {
             boolean cond = true;
             int codigo = factura.size() + 1;
@@ -947,7 +1191,7 @@ public class SistemaVentas extends javax.swing.JFrame {
             validaPanelProducto();
             factura.insertOrUpdateFactura(cond, codigo, String.valueOf(combo_tipo_factura.getSelectedIndex()), new java.sql.Date(date.getTime()), Float.parseFloat(text_total.getText()), combo_cliente_factura.getSelectedIndex() + 1);
             JOptionPane.showMessageDialog(null, "Factura " + msj + " Exitosamente.", "Extio", JOptionPane.INFORMATION_MESSAGE);
-            
+
         } catch (SQLException | NumberFormatException ex) {
             JOptionPane.showMessageDialog(null, "Error al " + msj + " Factura.", "Error", JOptionPane.ERROR_MESSAGE);
         }
@@ -988,6 +1232,7 @@ public class SistemaVentas extends javax.swing.JFrame {
                 vendedor = new Vendedor(ch.getConnection());
                 factura = new Factura(ch.getConnection());
                 producto = new Producto(ch.getConnection());
+                detalle = new Detalle(ch.getConnection());
                 JOptionPane.showMessageDialog(null, "Conexión Exitosa.", "Extio", JOptionPane.INFORMATION_MESSAGE);
                 combo_server.disable();
                 text_usuario.setEditable(false);
@@ -1043,7 +1288,7 @@ public class SistemaVentas extends javax.swing.JFrame {
                     Object[] r = cliente.selectCliente(Integer.parseInt(codigoCliente));
                     cliente.setCod((int) r[0]);
                     text_nombre_cliente.setText((String) r[1]);
-                    
+
                     combo_vendedor.setSelectedIndex((int) r[2] - 1);
                     panel_edit_add_cliente.setVisible(true);
                 }
@@ -1274,7 +1519,7 @@ public class SistemaVentas extends javax.swing.JFrame {
             } catch (SQLException ex) {
                 Logger.getLogger(SistemaVentas.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+
         }
     }//GEN-LAST:event_todo_vendedorActionPerformed
 
@@ -1285,7 +1530,7 @@ public class SistemaVentas extends javax.swing.JFrame {
             } catch (SQLException ex) {
                 Logger.getLogger(SistemaVentas.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+
         }
     }//GEN-LAST:event_todo_clienteActionPerformed
 
@@ -1296,7 +1541,7 @@ public class SistemaVentas extends javax.swing.JFrame {
             } catch (SQLException ex) {
                 Logger.getLogger(SistemaVentas.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+
         }
     }//GEN-LAST:event_todo_productoActionPerformed
 
@@ -1307,9 +1552,128 @@ public class SistemaVentas extends javax.swing.JFrame {
             } catch (SQLException ex) {
                 Logger.getLogger(SistemaVentas.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+
         }
     }//GEN-LAST:event_todo_facturaActionPerformed
+
+    private void btn_det_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_det_agregarActionPerformed
+        // TODO add your handling code here:
+        if (isConnected()) {
+            panel_edit_add_detalle.setVisible(true);
+            factura_aceptar.setText("Agregar");
+            try {
+                cargaCombo(combo_facturas_detalle, factura.selectTodoFactura());
+                cargaCombo(combo_productos_detalle, producto.selectTodoProducto());
+            } catch (SQLException ex) {
+                Logger.getLogger(SistemaVentas.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_btn_det_agregarActionPerformed
+
+    private void btn_det_consultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_det_consultaActionPerformed
+        if (isConnected()) {
+            try {
+                cargaCombo(combo_cons_prod, producto.selectTodoProducto());
+                cargaCombo(combo_cons_fact, factura.selectTodoFactura());
+                int codigoDetalle = JOptionPane.showConfirmDialog(this, panel_cons_det, "Consultar Detalle", JOptionPane.OK_CANCEL_OPTION);
+                if (codigoDetalle == JOptionPane.OK_OPTION) {
+                    Object[] r = detalle.selectDetalle(combo_cons_prod.getSelectedIndex() + 1, combo_cons_fact.getSelectedIndex() + 1);
+                    String producto_det = String.valueOf(r[0]);
+                    String factura_det = String.valueOf(r[1]);
+                    String cantidad = String.valueOf(r[2]);
+                    String total_detalle = String.valueOf(r[3]);
+                    JOptionPane.showMessageDialog(null, "Detalle: \n\nProducto : " + producto_det + "\nFactura : " + factura_det + "\nCantidad : " + cantidad + "\nTotal : " + total_detalle, "Detalle " + producto_det, JOptionPane.INFORMATION_MESSAGE);
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error al Consultar Detalle.", "Error", JOptionPane.ERROR_MESSAGE);
+                System.out.println(e);
+                e.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_btn_det_consultaActionPerformed
+
+    private void btn_det_modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_det_modificarActionPerformed
+        if (isConnected()) {
+            detalle_aceptar.setText("Modificar");
+            try {
+                cargaCombo(combo_cons_prod, producto.selectTodoProducto());
+                cargaCombo(combo_cons_fact, factura.selectTodoFactura());
+                int codigoDetalle = JOptionPane.showConfirmDialog(this, panel_cons_det, "Modificar Detalle", JOptionPane.OK_CANCEL_OPTION);
+                if (codigoDetalle == JOptionPane.OK_OPTION) {
+                    Object[] r = detalle.selectDetalle(combo_cons_prod.getSelectedIndex() + 1, combo_cons_fact.getSelectedIndex() + 1);
+                    combo_productos_detalle.setSelectedIndex((int) r[0]);
+                    combo_facturas_detalle.setSelectedIndex((int) r[1]);
+                    combo_cantidad.setSelectedIndex((int) r[2]);
+                    text_total_detalle.setText(String.valueOf((float) r[3]));
+                    panel_edit_add_detalle.setVisible(true);
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error al Modificar detalle.", "Error", JOptionPane.ERROR_MESSAGE);
+                System.out.println(e);
+            }
+        }
+    }//GEN-LAST:event_btn_det_modificarActionPerformed
+
+    private void btn_det_borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_det_borrarActionPerformed
+        if (isConnected()) {
+            panel_edit_add_detalle.setVisible(false);
+            try {
+                cargaCombo(combo_cons_prod, producto.selectTodoProducto());
+                cargaCombo(combo_cons_fact, factura.selectTodoFactura());
+                int codigoDetalle = JOptionPane.showConfirmDialog(this, panel_cons_det, "Eliminar Detalle", JOptionPane.OK_CANCEL_OPTION);
+                if (codigoDetalle == JOptionPane.OK_OPTION) {
+                    detalle.deleteDetalle(Integer.parseInt((String) combo_cons_prod.getSelectedItem()), Integer.parseInt((String) combo_cons_fact.getSelectedItem()));
+                    JOptionPane.showMessageDialog(null, "Factura eliminado Correctamento.", "Extio", JOptionPane.INFORMATION_MESSAGE);
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error al Eliminar Detalle.", "Error", JOptionPane.ERROR_MESSAGE);
+                e.printStackTrace();
+            }
+        }
+    }//GEN-LAST:event_btn_det_borrarActionPerformed
+
+    private void todo_detallesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_todo_detallesActionPerformed
+        if (isConnected()) {
+            try {
+                cargaTabla(headDetalles, detalle.selectTodoDetalle());
+            } catch (SQLException ex) {
+                Logger.getLogger(SistemaVentas.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+    }//GEN-LAST:event_todo_detallesActionPerformed
+
+    private void detalle_aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_detalle_aceptarActionPerformed
+        try {
+            boolean cond = true;
+            msj = "agregado";
+            if (detalle_aceptar.getText().equals("Modificar")) {
+                cond = false;
+                msj = "modificado";
+            }
+            validaPanelProducto();
+            detalle.insertOrUpdateDetalle(cond, combo_productos_detalle.getSelectedIndex(), combo_facturas_detalle.getSelectedIndex(), combo_cantidad.getSelectedIndex(), Float.parseFloat(text_total_detalle.getText()));
+            JOptionPane.showMessageDialog(null, "Detalle " + msj + " Exitosamente.", "Extio", JOptionPane.INFORMATION_MESSAGE);
+
+        } catch (SQLException | NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "Error al " + msj + " Detalle.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        detalle_cancelar.doClick();
+    }//GEN-LAST:event_detalle_aceptarActionPerformed
+
+    private void detalle_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_detalle_cancelarActionPerformed
+        panel_edit_add_detalle.setVisible(false);
+        combo_facturas_detalle.setSelectedIndex(-1);
+        combo_productos_detalle.setSelectedIndex(-1);
+        combo_cantidad.setSelectedIndex(-1);
+        text_total_detalle.setText(null);
+    }//GEN-LAST:event_detalle_cancelarActionPerformed
+
+    private void combo_cantidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_cantidadActionPerformed
+        // TODO add your handling code here:
+        
+        //text_total_detalle.setText((combo_cantidad.getSelectedIndex()+1)*);
+    }//GEN-LAST:event_combo_cantidadActionPerformed
 
     public boolean validaPanelCliente() {
         return text_nombre_cliente.getText().isEmpty()
@@ -1330,9 +1694,14 @@ public class SistemaVentas extends javax.swing.JFrame {
 
     private void cargaCombo(javax.swing.JComboBox x, Object[][] o) {
         Object[] mod = new Object[o.length];
-        if (o != null) {
+        if (x != combo_facturas_detalle) {
             for (int i = 0; i < o.length; i++) {
                 mod[i] = ("" + o[i][0] + " " + o[i][1]);
+            }
+            x.setModel(new DefaultComboBoxModel(mod));
+        } else {
+            for (int i = 0; i < o.length; i++) {
+                mod[i] = ("" + o[i][0]);
             }
             x.setModel(new DefaultComboBoxModel(mod));
         }
@@ -1371,6 +1740,10 @@ public class SistemaVentas extends javax.swing.JFrame {
     private javax.swing.JButton btn_cli_consulta;
     private javax.swing.JButton btn_cli_modificar;
     private javax.swing.JButton btn_conectar;
+    private javax.swing.JButton btn_det_agregar;
+    private javax.swing.JButton btn_det_borrar;
+    private javax.swing.JButton btn_det_consulta;
+    private javax.swing.JButton btn_det_modificar;
     private javax.swing.JButton btn_fac_agregar;
     private javax.swing.JButton btn_fac_borrar;
     private javax.swing.JButton btn_fac_consulta;
@@ -1385,11 +1758,19 @@ public class SistemaVentas extends javax.swing.JFrame {
     private javax.swing.JButton btn_ven_modificar;
     private javax.swing.JButton cliente_aceptar;
     private javax.swing.JButton cliente_cancelar;
+    private javax.swing.JComboBox combo_cantidad;
     private javax.swing.JComboBox combo_cliente_factura;
+    private javax.swing.JComboBox combo_codigo;
+    private javax.swing.JComboBox combo_cons_fact;
+    private javax.swing.JComboBox combo_cons_prod;
+    private javax.swing.JComboBox combo_facturas_detalle;
+    private javax.swing.JComboBox combo_productos_detalle;
     private javax.swing.JComboBox combo_server;
     private javax.swing.JComboBox combo_tipo_factura;
     private javax.swing.JComboBox combo_vendedor;
     private javax.swing.JComboBox cs;
+    private javax.swing.JButton detalle_aceptar;
+    private javax.swing.JButton detalle_cancelar;
     private javax.swing.JButton factura_aceptar;
     private javax.swing.JButton factura_cancelar;
     private javax.swing.JLabel jLabel1;
@@ -1399,8 +1780,14 @@ public class SistemaVentas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1408,14 +1795,19 @@ public class SistemaVentas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JPanel panel_Clientes;
+    private javax.swing.JPanel panel_Detalles;
     private javax.swing.JPanel panel_Facturas;
     private javax.swing.JPanel panel_Productos;
     private javax.swing.JPanel panel_Vendedores;
+    private javax.swing.JPanel panel_codigo;
     private javax.swing.JPanel panel_conectar;
     private javax.swing.JPanel panel_conectar1;
+    private javax.swing.JPanel panel_cons_det;
     private javax.swing.JPanel panel_edit_add_cliente;
+    private javax.swing.JPanel panel_edit_add_detalle;
     private javax.swing.JPanel panel_edit_add_factura;
     private javax.swing.JPanel panel_edit_add_productos;
     private javax.swing.JPanel panel_edit_add_vendedor;
@@ -1429,9 +1821,11 @@ public class SistemaVentas extends javax.swing.JFrame {
     private javax.swing.JTextField text_nombre_vendedor;
     private javax.swing.JFormattedTextField text_precio_producto;
     private javax.swing.JTextField text_total;
+    private javax.swing.JTextPane text_total_detalle;
     private javax.swing.JTextField text_total_vendido;
     private javax.swing.JTextField text_usuario;
     private javax.swing.JButton todo_cliente;
+    private javax.swing.JButton todo_detalles;
     private javax.swing.JButton todo_factura;
     private javax.swing.JButton todo_producto;
     private javax.swing.JButton todo_vendedor;
