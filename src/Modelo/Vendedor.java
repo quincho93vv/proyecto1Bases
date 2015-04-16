@@ -50,9 +50,8 @@ public class Vendedor {
     }
 
     public Object[] selectVendedor(int codigo) throws SQLException {
-        Object[] result = new Object[3];  // En lugar de este array, se puede crear ya sea un Cliente cm tal 
-        // (con atributos definidos) o una lista o alguna otra cosa
-
+        this.connection.setAutoCommit(false);
+        Object[] result = new Object[3];
         cs = connection.prepareCall("{? = call FS_002(?)}");
         if (connection.getMetaData().getURL().equals("jdbc:oracle:thin:@localhost:1521:xe")) {
             cs.registerOutParameter(1, OracleTypes.CURSOR);
@@ -68,11 +67,12 @@ public class Vendedor {
             result[2] = rs.getFloat("TotalVendido");
         }
         cs.close();
+        this.connection.setAutoCommit(true);
         return result;
     }
 
     public Object[][] selectTodoVendedor() throws SQLException {
-
+        this.connection.setAutoCommit(false);
         cs = connection.prepareCall("{? = call FS_007()}");
         if (connection.getMetaData().getURL().equals("jdbc:oracle:thin:@localhost:1521:xe")) {
             cs.registerOutParameter(1, OracleTypes.CURSOR);
@@ -90,15 +90,22 @@ public class Vendedor {
             count++;
         }
         cs.close();
+        this.connection.setAutoCommit(true);
         return result;
     }
 
     public int size() throws SQLException {
         int c=0;
+        String cont="";
         Statement stm = connection.createStatement();
         ResultSet s = stm.executeQuery("Select COUNT(*) From Vendedores");
+        if (connection.getMetaData().getURL().equals("jdbc:oracle:thin:@localhost:1521:xe")){
+            cont = "COUNT(*)";
+        } else {
+            cont = "Count";
+        }
         while(s.next()){
-            c=s.getInt("COUNT(*)");
+            c=s.getInt(cont);
         }
         return c; 
     }

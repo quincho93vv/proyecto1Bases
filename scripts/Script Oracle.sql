@@ -118,20 +118,6 @@ END;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 --  Procedimientos y Funciones para Vendedor
 
 -- INSERT
@@ -197,17 +183,6 @@ EXCEPTION
       raise_application_error (-20002,'DB: Error al Consultar Vendedor.');
 END;
 /
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -279,15 +254,6 @@ END;
 
 
 
-
-
-
-
-
-
-
-
-
 --  Procedimientos y Funciones para Detalle
 
 -- INSERT
@@ -353,15 +319,6 @@ EXCEPTION
       raise_application_error (-20002,'DB: Error al Consultar Detalles.');
 END;
 /
-
-
-
-
-
-
-
-
-
 
 
 --  Procedimientos y Funciones para Producto
@@ -430,12 +387,4 @@ EXCEPTION
 END;
 /
 
-drop table detalles;
-drop table facturas;
-drop table clientes;
-drop table vendedores;
-drop table productos;
-
-select * from facturas;
-commit;
 

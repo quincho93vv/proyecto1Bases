@@ -42,9 +42,8 @@ public class Factura {
     }
 
     public Object[] selectFactura(int codigo) throws SQLException {
-        Object[] result = new Object[5];  // En lugar de este array, se puede crear ya sea un Cliente cm tal 
-        // (con atributos definidos) o una lista o alguna otra cosa
-
+        this.connection.setAutoCommit(false);
+        Object[] result = new Object[5];
         cs = connection.prepareCall("{? = call FS_003(?)}");
         if (connection.getMetaData().getURL().equals("jdbc:oracle:thin:@localhost:1521:xe")) {
             cs.registerOutParameter(1, OracleTypes.CURSOR);
@@ -62,12 +61,13 @@ public class Factura {
             result[4] = rs.getInt("Cliente");
         }
         cs.close();
+        this.connection.setAutoCommit(true);
         return result;
         //int numero, String tipo, Date fecha, float total, int cliente
     }
     
     public Object[][] selectTodoFactura() throws SQLException {
-
+        this.connection.setAutoCommit(false);
         cs = connection.prepareCall("{? = call FS_008()}");
         if (connection.getMetaData().getURL().equals("jdbc:oracle:thin:@localhost:1521:xe")) {
             cs.registerOutParameter(1, OracleTypes.CURSOR);
@@ -87,15 +87,22 @@ public class Factura {
             count++;
         }
         cs.close();
+        this.connection.setAutoCommit(true);
         return result;
     }
 
     public int size() throws SQLException {
         int c=0;
+        String cont="";
         Statement stm = connection.createStatement();
         ResultSet s = stm.executeQuery("Select COUNT(*) From Facturas");
+        if (connection.getMetaData().getURL().equals("jdbc:oracle:thin:@localhost:1521:xe")){
+            cont = "COUNT(*)";
+        } else {
+            cont = "Count";
+        }
         while(s.next()){
-            c=s.getInt("COUNT(*)");
+            c=s.getInt(cont);
         }
         return c; 
     }

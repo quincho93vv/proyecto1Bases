@@ -1,23 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Modelo;
 
 import java.sql.CallableStatement;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Types;
 import oracle.jdbc.OracleTypes;
 
-/**
- *
- * @author Alonso
- */
 public class Detalle {
 
     private Connection connection;
@@ -51,9 +41,8 @@ public class Detalle {
     }
 
     public Object[] selectDetalle(int producto, int factura) throws SQLException {
-        Object[] result = new Object[4];  // En lugar de este array, se puede crear ya sea un Cliente cm tal 
-        // (con atributos definidos) o una lista o alguna otra cosa
-
+        this.connection.setAutoCommit(false);
+        Object[] result = new Object[4];
         cs = connection.prepareCall("{? = call FS_004(?,?)}");
         if (connection.getMetaData().getURL().equals("jdbc:oracle:thin:@localhost:1521:xe")) {
             cs.registerOutParameter(1, OracleTypes.CURSOR);
@@ -72,11 +61,12 @@ public class Detalle {
             result[3] = rs.getFloat("Total");
         }
         cs.close();
+        this.connection.setAutoCommit(true);
         return result;
     }
 
     public Object[][] selectTodoDetalle() throws SQLException {
-
+        this.connection.setAutoCommit(false);
         cs = connection.prepareCall("{? = call FS_009()}");
         if (connection.getMetaData().getURL().equals("jdbc:oracle:thin:@localhost:1521:xe")) {
             cs.registerOutParameter(1, OracleTypes.CURSOR);
@@ -95,15 +85,22 @@ public class Detalle {
             count++;
         }
         cs.close();
+        this.connection.setAutoCommit(true);
         return result;
     }
 
     public int size() throws SQLException {
         int c = 0;
+        String cont="";
         Statement stm = connection.createStatement();
         ResultSet s = stm.executeQuery("Select COUNT(*) From Detalles");
-        while (s.next()) {
-            c = s.getInt("COUNT(*)");
+        if (connection.getMetaData().getURL().equals("jdbc:oracle:thin:@localhost:1521:xe")){
+            cont = "COUNT(*)";
+        } else {
+            cont = "Count";
+        }
+        while(s.next()){
+            c=s.getInt(cont);
         }
         return c;
     }

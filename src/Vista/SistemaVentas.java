@@ -1238,10 +1238,11 @@ public class SistemaVentas extends javax.swing.JFrame {
                 text_usuario.setEditable(false);
                 pass_usuario.setEditable(false);
                 btn_conectar.setText("Desconectar");
-                cargaCombo(combo_vendedor, vendedor.selectTodoVendedor());
                 cargaCombo(combo_cliente_factura, cliente.selectTodoCliente());
+                cargaCombo(combo_vendedor, vendedor.selectTodoVendedor());
             } catch (SQLException e) {
                 JOptionPane.showMessageDialog(null, "Error al Conectar.", "Error", JOptionPane.ERROR_MESSAGE);
+                e.printStackTrace();
             }
         }
 
